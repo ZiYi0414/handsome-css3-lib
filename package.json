@@ -1,0 +1,37 @@
+{
+  "name": "handsome-css3-lib",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 8204",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.12",
+    "classnames": "^2.3.2",
+    "next": "13.0.1",
+    "next-themes": "^0.2.1",
+    "postcss": "^8.4.18",
+    "postcss-loader": "^7.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-use": "^17.4.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
+    "tailwindcss": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "18.8.0",
+    "@types/react": "18.0.21",
+    "@types/react-dom": "18.0.6",
+    "eslint": "8.24.0",
+    "eslint-config-next": "12.3.1",
+    "prettier": "2.7.1",
+    "typescript": "4.8.4"
+  },
+  "engines": {
+    "node": ">=14.18.0 <=17.0.0"
+  }
+}

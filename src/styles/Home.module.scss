@@ -1,0 +1,44 @@
+@import url('https://fonts.font.im/css?family=Monoton');
+
+.loading {
+  p {
+    color: #f1f2f6;
+    font-family: 'Comfortaa', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    display: inline-block;
+    border: 4px dashed #57606f;
+    border-width: 4px 0;
+    padding: 1.5em 0em;
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    width: 40em;
+    margin: 0 0 0 -20em;
+    span {
+      font: bold 5em/1 'Monoton', cursive;
+      letter-spacing: 0;
+      padding: 0.25em 0 0.325em;
+      display: block;
+      margin: 0 auto;
+      text-shadow: 0 0 80px #ffffff;
+      background: url('/img/loading.png');
+      background-size: 20%;
+      background-repeat: repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: aitf 80s linear infinite;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+    }
+  }
+  @keyframes aitf {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+}
