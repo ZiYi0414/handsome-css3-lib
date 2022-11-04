@@ -5,7 +5,9 @@ import Header from '@/components/layout/Header';
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <div className="mx-8 mb:mx-4">{children}</div>
+      <Header />
+      <div className="">{children}</div>
+      <Footer />
     </>
   );
 }

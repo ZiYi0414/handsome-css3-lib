@@ -1,12 +1,9 @@
 import { useMemo } from 'react';
-
+import styles from './index.module.scss';
 export default function Header() {
   return (
     <header>
-      <section className="layout">
-        <div className="mx-8 flex h-[60px] items-center justify-between leading-[60px] mb:mx-4">
-        </div>
-      </section>
+      <div className={styles.header}>HEADER</div>
     </header>
   );
 }

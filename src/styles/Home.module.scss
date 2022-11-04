@@ -1,7 +1,9 @@
 @import url('https://fonts.font.im/css?family=Monoton');
 
 .loading {
-  background: #57606f;
+  height: 500px;
+  width: 100vw;
+  background: #1e272e;
   p {
     color: #f1f2f6;
     font-family: 'Comfortaa', cursive;
@@ -20,7 +22,7 @@
       padding: 0.25em 0 0.325em;
       display: block;
       margin: 0 auto;
-      text-shadow: 0 0 80px #ffffff;
+      text-shadow: 0 0 50px #e9e9e9;
       background: url('/img/loading.png');
       background-size: 20%;
       background-repeat: repeat;

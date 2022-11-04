@@ -2,14 +2,14 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const defaultMeta = {
-  title: 'Luyiin',
-  siteName: `Luyiin's Blog`,
+  title: 'HANDSOME-CSS3-LIB',
+  siteName: `HANDSOME-CSS3-LIB`,
   description:
-    'Luyiin，comp sci. cv engineer & visual design enthusiast.. 个人网站，博客，funny coder (一个肥宅或艺术家',
+    'HANDSOME-CSS3-LIB',
   keywords:
-    'Luyiin，comp sci. cv engineer & visual design enthusiast.. 个人网站，博客，funny coder (一个肥宅或艺术家',
+    'HANDSOME-CSS3-LIB',
   /** Without additional '/' on the end */
-  url: 'https://luyiin.me',
+  url: '',
   type: 'website',
   robots: 'follow, index',
   image: 'https://help-assets.codehub.cn/enterprise/guanwang/favicon.ico'

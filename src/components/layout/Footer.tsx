@@ -17,7 +17,7 @@ export default function Footer() {
             className="pl-1"
             rel="noreferrer"
           >
-            © LUYIIN
+            © HANDSOME-CSS
           </a>
         </div>
       </section>
