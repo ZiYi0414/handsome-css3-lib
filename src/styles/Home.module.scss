@@ -1,14 +1,13 @@
 @import url('https://fonts.font.im/css?family=Monoton');
 
 .loading {
+  background: #57606f;
   p {
     color: #f1f2f6;
     font-family: 'Comfortaa', cursive;
     text-transform: uppercase;
     letter-spacing: 0.25em;
     display: inline-block;
-    border: 4px dashed #57606f;
-    border-width: 4px 0;
     padding: 1.5em 0em;
     position: absolute;
     top: 18%;

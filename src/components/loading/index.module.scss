@@ -1,0 +1,149 @@
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  transform: $transform;
+}
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+  animation: $animation;
+}
+@mixin keyframes($name, $name1) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+@mixin opacity($opacity) {
+  -webkit-opacity: $opacity;
+  -moz-opacity: $opacity;
+  opacity: $opacity;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//variables
+$size: 50px;
+$primary-color: #2f3542;
+
+.loading_content {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  inset: 0;
+  background: #fff;
+  z-index: 99999;
+  transition: all 0.25s;
+  transition-delay: 2.85s;
+}
+.loading_content_fade {
+  opacity: 0;
+}
+//cube only
+.cube_folding {
+  width: $size;
+  height: $size;
+  display: inline-block;
+  @include transform(rotate(45deg));
+  font-size: 0;
+  span {
+    position: relative;
+    width: $size/2;
+    height: $size/2;
+    @include transform(scale(1.1));
+    display: inline-block;
+    &::before {
+      content: '';
+      background-color: $primary-color;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: $size/2;
+      height: $size/2;
+      -moz-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+      -webkit-transform-origin: 100% 100%;
+      transform-origin: 100% 100%;
+      @include animation(folding 2.5s infinite linear both);
+    }
+  }
+  .leaf2 {
+    @include transform(rotateZ(90deg) scale(1.1));
+    &::before {
+      -webkit-animation-delay: 0.3s;
+      animation-delay: 0.3s;
+      background-color: darken($primary-color, 5%);
+    }
+  }
+  .leaf3 {
+    @include transform(rotateZ(270deg) scale(1.1));
+    &::before {
+      -webkit-animation-delay: 0.9s;
+      animation-delay: 0.9s;
+      background-color: darken($primary-color, 5%);
+    }
+  }
+  .leaf4 {
+    @include transform(rotateZ(180deg) scale(1.1));
+    &::before {
+      -webkit-animation-delay: 0.6s;
+      animation-delay: 0.6s;
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+//animation
+@include keyframes(folding, folding animation) {
+  0%,
+  10% {
+    @include transform(perspective(140px) rotateX(-180deg));
+    @include opacity(0);
+  }
+  25%,
+  75% {
+    @include transform(perspective(140px) rotateX(0deg));
+    @include opacity(1);
+  }
+  90%,
+  100% {
+    @include transform(perspective(140px) rotateY(180deg));
+    @include opacity(0);
+  }
+}
+
+//with loading text and shadow
+.cube_wrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+@include keyframes(text, text animation) {
+  100% {
+    top: ($size/2) + 10;
+  }
+}
+@include keyframes(shadow, shadow animation) {
+  100% {
+    bottom: -18px;
+    width: $size * 2;
+  }
+}
