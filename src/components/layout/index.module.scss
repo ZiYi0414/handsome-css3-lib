@@ -1,7 +1,15 @@
-.header {
-  width: 100%;
+.header__wrap {
+  width: 100vw;
   height: 80px;
   box-shadow: 1px 1px 1px #ced6e0;
-  background: #f1f2f6;
-  color: #000;
+  z-index: 9999;
+  .header {
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70rem;
+    height: 100%;
+    margin: auto;
+  }
 }

@@ -15,8 +15,10 @@ body {
   -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-  background: #ffffff;
+  transition: all 0.1s;
+  overflow-x: hidden;
 }
+
 
 a {
   color: inherit;
@@ -100,21 +102,7 @@ a {
   @apply after:shadow-md dark:after:shadow-none;
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar:horizontal {
-  height: 6px;
-}
-::-webkit-scrollbar-track,
-::-webkit-scrollbar-corner {
-  background: var(--c-bg);
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--c-scrollbar);
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--c-scrollbar-hover);
+.typing-demo {
+  font-family: Comfortaa;
+  font-size: 2.5rem;
 }

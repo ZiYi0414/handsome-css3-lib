@@ -1,0 +1,64 @@
+.loading {
+  height: 500px;
+  width: 100%;
+  background: #1e272e;
+  p {
+    color: #f1f2f6;
+    font-family: 'Comfortaa', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    display: inline-block;
+    padding: 1.5em 0em;
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    width: 40em;
+    margin: 0 0 0 -20em;
+    span {
+      font: bold 5em/1 'Monoton', cursive;
+      letter-spacing: 0;
+      padding: 0.25em 0 0.325em;
+      display: block;
+      margin: 0 auto;
+      text-shadow: 0 0 50px #e9e9e9;
+      background: url('/img/loading.png');
+      background-size: 20%;
+      background-repeat: repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: aitf 80s linear infinite;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+    }
+  }
+  @keyframes aitf {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 100%;
+    }
+  }
+}
+
+.card {
+  position: relative;
+  float: left;
+  width: calc(33.3333% - 20px);
+  height: 420px;
+  background-color: white;
+  margin-right: 30px;
+  margin-bottom: 50px;
+  box-shadow: 0 6px 15px rgb(36 37 38 / 8%);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  @media (min-width: 1025px) {
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+  }
+}
+
+

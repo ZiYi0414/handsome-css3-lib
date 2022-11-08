@@ -34,6 +34,10 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googlefonts.cn/css?family=Comfortaa"
           ></link>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googlefonts.cn/css?family=Monoton"
+          ></link>
         </Head>
         <body>
           <Main />

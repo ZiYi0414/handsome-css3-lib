@@ -1,0 +1,36 @@
+.iconGroup__warp {
+  display: flex;
+  align-items: center;
+  button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 88px;
+    height: 36px;
+    border-radius: 36px;
+    border: 1px dashed #cbcbcb;
+    overflow: hidden;
+    transition: all 0.25s;
+    div {
+      position: absolute;
+      transition: transform 0.35s;
+    }
+    div:nth-child(2) {
+      transform: translateY(35px);
+    }
+  }
+  button:hover {
+    border-style: solid;
+    border-color: #a0a0a0;
+    transition: all 0.25s;
+    div:nth-child(1) {
+      transform: translateY(-30px);
+      transition: transform 0.35s;
+    }
+    div:nth-child(2) {
+      transform: translateY(5px);
+      transition: transform 0.35s;
+    }
+  }
+}

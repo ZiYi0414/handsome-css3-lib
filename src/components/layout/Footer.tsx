@@ -4,20 +4,14 @@ export default function Footer() {
       <section className="flex flex-col items-end">
         <div>
           <a
-            href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            CC BY-NC-SA 4.0
-          </a>{' '}
-          {new Date().getFullYear()}
-          <a
             href="https://github.com/ZiYi0414"
             target="_blank"
             className="pl-1"
             rel="noreferrer"
           >
-            © HANDSOME-CSS
+            © HANDSOME-CSS-LIB 🌸
+            {' '}
+            {new Date().getFullYear()}
           </a>
         </div>
       </section>
