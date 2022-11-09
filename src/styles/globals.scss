@@ -19,6 +19,14 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  --background: white;
+  --foreground: black;
+}
+[data-theme='dark'] {
+  --background: black;
+  --foreground: white;
+}
 
 a {
   color: inherit;

@@ -3,6 +3,7 @@ import * as React from 'react';
 import Layout from '@/components/layout/Layout';
 import Link from 'next/link';
 import Seo from 'Seo';
+import Star from 'content/star';
 
 export default function NotFoundPage() {
   return (
@@ -16,6 +17,7 @@ export default function NotFoundPage() {
           <Link href={'/'} className="text-[#d23669] mt-4">
             Go Back ( )
           </Link>
+          <Star />
         </section>
       </main>
     </Layout>

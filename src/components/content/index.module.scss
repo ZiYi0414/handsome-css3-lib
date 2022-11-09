@@ -1,7 +1,6 @@
 .loading {
   height: 500px;
   width: 100%;
-  background: #1e272e;
   p {
     color: #f1f2f6;
     font-family: 'Comfortaa', cursive;
@@ -47,10 +46,9 @@
   float: left;
   width: calc(33.3333% - 20px);
   height: 420px;
-  background-color: white;
   margin-right: 30px;
   margin-bottom: 50px;
-  box-shadow: 0 6px 15px rgb(36 37 38 / 8%);
+  border: 2px dashed #88888825;
   border-radius: 16px;
   overflow: hidden;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
@@ -61,4 +59,50 @@
   }
 }
 
-
+.star__background {
+  width: 100vw;
+  height: 500px;
+  overflow: hidden;
+  background: radial-gradient(
+    200% 100% at bottom center,
+    #f7f7b6,
+    #e96f92,
+    #75517d,
+    #1b2947
+  );
+  background: radial-gradient(
+    220% 105% at top center,
+    #1b2947 10%,
+    #75517d 40%,
+    #e96f92 65%,
+    #f7f7b6
+  );
+  background-attachment: fixed;
+  .stars {
+    transform: perspective(500px);
+    transform-style: preserve-3d;
+    perspective-origin: 50% 100%;
+    animation: rotate 90s infinite linear;
+  }
+  .star {
+    width: 2px;
+    height: 2px;
+    background: #f7f7b6;
+    //border-radius:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0 -300px;
+    transform: translate3d(0, 0, -300px);
+    backface-visibility: hidden;
+  }
+  @keyframes rotate {
+    0% {
+      transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+    }
+    100% {
+      transform: perspective(400px) rotateZ(20deg) rotateX(-40deg)
+        rotateY(-360deg);
+    }
+  }
+}
