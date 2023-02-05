@@ -29,8 +29,39 @@
 }
 
 .container {
-  max-width: 1320px;
+  max-width: 1200px;
   margin: auto;
   padding: 50px 30px;
-  background: var(--background);
+}
+
+.posts__prereview__heading {
+  font: 700 2em/1 Montserrat, sans-serif;
+  color: var(--primary);
+}
+
+.posts__prereview__content {
+  display: grid;
+  grid-gap: 20px 14px;
+  align-content: start;
+  justify-content: center;
+  align-items: start;
+  grid-template-columns: repeat(auto-fill, minmax(274px, 1fr));
+  margin-top: 20px;
+}
+
+.posts__see__all__link {
+  position: relative;
+  width: 88px;
+  text-align: center;
+  color: var(--primary);
+  &::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    left: 0;
+    bottom: -7px;
+    background: #d23669;
+    height: 2px;
+  }
+  @apply block my-8 mx-auto;
 }
