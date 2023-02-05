@@ -34,3 +34,39 @@
     }
   }
 }
+
+.nav__link {
+  position: relative;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav__link::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  left: 0;
+  bottom: -7px;
+  background: #d23669;
+  height: 2px;
+  transition: 0.3s ease-out;
+}
+
+.nav__link::before {
+  position: absolute;
+  /*   box-sizing: border-box; */
+  content: attr(data-name);
+  width: 0%;
+  inset: 0;
+  color: #d23669;
+  overflow: hidden;
+  transition: 0.15s ease-in-out;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+.nav__link:hover::before {
+  width: 100%;
+}
