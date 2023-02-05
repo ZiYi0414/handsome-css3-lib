@@ -22,10 +22,29 @@ body {
 :root {
   --background: white;
   --foreground: black;
+  --primary: #1b2947;
+  --blue: #0071e2;
+  --blue-hover: #016dd9;
+  --red: #ff5858;
+  --green: #06ad0c;
+  --darkred: #ff0707;
+  --black: black;
+  --gold: #e7d000;
+  --lightgray: #e8e8e8;
+  --offwhite: #f2f2f2;
+  --grey: #9c9c9c;
+  --blue-grey-1: #9fa3af;
+  --blue-grey-2: #bbbec9be;
+  --secondary-grey-dark: #292929;
+  --secondary-grey-light: #dcdcdc;
+  --maindark: #171717;
+  --dark: #212121;
+  --semidark: #2c2c2c;
 }
 [data-theme='dark'] {
   --background: black;
   --foreground: white;
+  --primary: #f2f2f2;
 }
 
 a {
