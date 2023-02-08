@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import styles from '../index.module.scss';
 import styled, { StyledComponent } from 'styled-components';
-
 interface ICardProps {
   post: {
     css: string;
@@ -12,18 +11,18 @@ interface ICardProps {
   };
 }
 
-const useStyledComponent = (css_string: string) => {
-  return styled.div`
-    ${css_string}
-  `;
-};
+interface DivProps {
+  css: string
+}
+const DivStyled = styled.div<DivProps>`
+  ${props => props.css}
+`;
 
 export default function Card({ post }: ICardProps) {
-  const DivStyled = useStyledComponent(post.css);
   return (
     <div>
       <div className={styles.card}>
-        <DivStyled>
+        <DivStyled css={post.css}>
           <div
             id={post.title}
             className={classNames(post.title)}

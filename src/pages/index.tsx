@@ -18,7 +18,6 @@ interface IProps {
 }
 export default function Home({ components_data }: IProps) {
   const isLoaded = useLoaded();
-  console.log(components_data);
 
   return (
     <Layout>
