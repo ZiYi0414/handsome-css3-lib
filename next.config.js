@@ -1,6 +1,6 @@
 const nextConfig = {
   eslint: {
-    dirs: ['src'],
+    dirs: ['src']
   },
   reactStrictMode: true,
   swcMinify: true,

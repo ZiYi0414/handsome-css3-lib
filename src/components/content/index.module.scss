@@ -43,6 +43,9 @@
 
 .card {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   height: 250px;
   border-radius: 8px;

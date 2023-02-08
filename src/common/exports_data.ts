@@ -1,38 +1,40 @@
-interface HandsomeComponent {
-  index: string;
+import { ContentType, HSComponentProps } from 'types/component';
+
+export interface HandsomeComponent {
+  index: ContentType;
   type: string;
-  children: any[];
+  children: HSComponentProps[];
 }
 export const components_data: HandsomeComponent[] = [
   {
     index: 'buttons',
     type: '按钮 Buttons',
-    children: [1, 3, 4, 5, 6]
+    children: []
   },
   {
     index: 'loaders',
     type: '加载 Loaders',
-    children: [1, 3, 4, 5, 6]
+    children: []
   },
   {
     index: 'switches',
     type: '开关 Switches',
-    children: [1, 3, 4, 5, 6]
+    children: []
   },
   {
     index: 'inputs',
     type: '输入框 Inputs',
-    children: [1, 3, 4, 5, 6]
+    children: []
   },
   {
     index: 'checkboxes',
     type: '多选框 Checkboxes',
-    children: [1, 3, 4, 5, 6]
+    children: []
   },
 
   {
     index: 'others',
     type: '创想 others',
-    children: [1, 3, 4, 5, 6]
+    children: []
   }
 ];

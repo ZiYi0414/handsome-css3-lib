@@ -27,7 +27,9 @@
     opacity: 0;
   }
 }
-
+.home__wrap {
+  background: var(--background);
+}
 .container {
   max-width: 1200px;
   margin: auto;
