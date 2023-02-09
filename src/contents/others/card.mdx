@@ -1,0 +1,335 @@
+---
+title: nameless
+made_by: nameless
+---
+
+```html
+<div class="content">
+  <div class="btn"></div>
+  <div class="btn"></div>
+  <div class="btn"></div>
+  <div class="btn"></div>
+  <div class="square"></div>
+</div>
+```
+
+```css
+.content {
+  --speed: 8s;
+  --size: 110px;
+  --pink: #ef476f;
+  --yellow: #ffd166;
+  --green: #06d6a0;
+  --blue: #219ebc;
+  --dark: #363537;
+  --back: var(--pink);
+  --sz1: calc(var(--size) / 30);
+  --sz2: calc(var(--size) / 15);
+  --sp2: calc(calc(var(--speed) / 8) * -2);
+  --sp4: calc(calc(var(--speed) / 8) * -4);
+  --sp6: calc(calc(var(--speed) / 8) * -6);
+  width: var(--size);
+  height: var(--size);
+  animation: spin var(--speed) linear 0s infinite, colors var(--speed) linear calc(
+        calc(var(--speed) / 20) * -1
+      )
+      infinite;
+  background: var(--back);
+  border-radius: 1px;
+  border: var(--sz2) solid var(--dark);
+  position: relative;
+  box-shadow: 0 0 0 var(--sz1) var(--dark);
+}
+
+.square {
+  width: calc(calc(100% / 2) * 1);
+  height: calc(calc(100% / 2) * 1);
+  background: var(--dark);
+  animation: jump var(--speed) cubic-bezier(0.73, 0.01, 1, 0.49) calc(
+      var(--speed) / 20
+    ) infinite;
+  border-radius: 2px;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  box-shadow: 0 0 0 calc(var(--size) / 25) var(--back) inset;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes colors {
+  0.01%,
+  25% {
+    --back: var(--pink);
+  }
+  25.01%,
+  50% {
+    --back: var(--yellow);
+  }
+  50.01%,
+  75% {
+    --back: var(--green);
+  }
+  75.01%,
+  100% {
+    --back: var(--blue);
+  }
+}
+
+@keyframes jump {
+  15%,
+  17%,
+  25% {
+    left: 0%;
+    top: 50%;
+  }
+  16% {
+    left: 2%;
+    top: 50%;
+  }
+
+  40%,
+  42%,
+  50% {
+    left: 0%;
+    top: 0%;
+  }
+  41% {
+    left: 0%;
+    top: 2%;
+  }
+
+  65%,
+  67%,
+  75% {
+    left: 50%;
+    top: 0%;
+  }
+  66% {
+    left: 48%;
+    top: 0%;
+  }
+
+  90%,
+  92%,
+  100% {
+    left: 50%;
+    top: 50%;
+  }
+  91% {
+    left: 50%;
+    top: 48%;
+  }
+}
+
+.btn {
+  position: absolute;
+  width: 25%;
+  height: 10%;
+  background: #fff;
+  bottom: 0;
+  left: 62.5%;
+  border: var(--sz1) solid var(--dark);
+  border-bottom-width: 1px;
+  box-sizing: border-box;
+  border-radius: 2px 2px 0 0;
+  --rays: var(--pink);
+  background: var(--rays);
+  z-index: 1;
+  box-shadow: 0 1px 0 0 var(--dark);
+  animation: btn-pink var(--speed) var(--sp2) infinite;
+}
+
+.btn:nth-child(2) {
+  left: 0%;
+  top: 52.5%;
+  transform: rotate(90deg);
+  transform-origin: left bottom;
+  --rays: var(--yellow);
+  animation-name: btn-yellow;
+  animation-delay: 0s;
+}
+
+.btn:nth-child(3) {
+  left: 12.5%;
+  top: -10%;
+  transform: rotate(180deg);
+  transform-origin: center bottom;
+  --rays: var(--green);
+  animation-name: btn-green;
+  animation-delay: var(--sp6);
+}
+
+.btn:nth-child(4) {
+  left: 100%;
+  top: 27.5%;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  --rays: var(--blue);
+  animation-name: btn-blue;
+  animation-delay: var(--sp4);
+}
+
+@keyframes btn-yellow {
+  0%,
+  20%,
+  46%,
+  100% {
+    left: 0%;
+  }
+  22%,
+  44% {
+    left: -6.5%;
+  }
+}
+
+@keyframes btn-green {
+  0%,
+  20%,
+  46%,
+  100% {
+    top: -10%;
+  }
+  22%,
+  44% {
+    top: -16.5%;
+  }
+}
+
+@keyframes btn-blue {
+  0%,
+  20%,
+  46%,
+  100% {
+    left: 100%;
+  }
+  22%,
+  44% {
+    left: 106.5%;
+  }
+}
+
+@keyframes btn-pink {
+  0%,
+  20%,
+  46%,
+  100% {
+    bottom: 0%;
+  }
+  22%,
+  44% {
+    bottom: -6.5%;
+  }
+}
+
+.btn:after,
+.content:after {
+  content: '';
+  --opac: 0;
+  width: calc(var(--size) + calc(var(--size) / 8));
+  position: absolute;
+  height: calc(var(--size) + calc(var(--size) / 8));
+  bottom: 0;
+  background: conic-gradient(
+      from 0deg at var(--sz2) var(--sz1),
+      var(--rays) 0 25%,
+      #fff0 0 100%
+    ), conic-gradient(
+      from 0deg at var(--sz2) var(--sz1),
+      var(--rays) 0 25%,
+      #fff0 0 100%
+    ), linear-gradient(
+      90deg,
+      var(--rays) 0 var(--sz1),
+      #fff0 0 calc(100% - var(--sz1)),
+      var(--rays) 0 100%
+    ), #fff0;
+  background-repeat: no-repeat;
+  background-size: calc(100% - var(--sz2)) var(--sz2), calc(100% - var(--sz2)) var(
+        --sz2
+      ), 100% 100%;
+  background-position: 0vmin calc(100% + var(--sz1)), 0 0, 0 0;
+  left: -387.5%;
+  opacity: var(--opac);
+  animation: ray-opac var(--speed) ease-out var(--sp2) infinite;
+  transform-origin: center bottom;
+  transition: --opac 0.25s;
+  --detail: conic-gradient(
+    from 0deg at 0 var(--sz1),
+    var(--dark) 0 25%,
+    #fff0 0 100%
+  );
+  background: var(--detail), var(--detail), var(--detail), var(--detail),
+    conic-gradient(
+      from 0deg at var(--sz2) var(--sz1),
+      var(--rays) 0 25%,
+      #fff0 0 100%
+    ), conic-gradient(
+      from 0deg at var(--sz2) var(--sz1),
+      var(--rays) 0 25%,
+      #fff0 0 100%
+    ), linear-gradient(90deg, var(--rays) 0 var(--sz1), #fff0 0 calc(100% - var(--sz1)), var(
+          --rays
+        ) 0 100%);
+  background-repeat: no-repeat;
+  background-size: calc(var(--sz1) + 2px) calc(var(--sz2) / 2.25), calc(
+        var(--sz1) + 2px
+      ) calc(var(--sz2) / 2.25), calc(var(--sz1) + 2px) calc(var(--sz2) / 2.25),
+    calc(var(--sz1) + 2px) calc(var(--sz2) / 2.25),
+    calc(100% - var(--sz2) + calc(var(--sz1) / 4)) var(--sz2), calc(
+        calc(100% - calc(var(--sz2) / 2.5)) - var(--sz1)
+      ) var(--sz2), 100% 100%;
+  background-position: calc(100% + 1px) var(--sz1), 0vmin var(--sz1),
+    calc(100% + 1px) calc(100% - calc(var(--sz1) / 1.1)), 0px calc(100% - calc(var(
+                --sz1
+              ) / 1.1)), 0px calc(100% + var(--sz1)), 0 0, 0 0;
+}
+
+.btn:nth-child(1):after,
+.btn:nth-child(2):after,
+.btn:nth-child(3)::after {
+  bottom: -1px;
+}
+
+.content:after {
+  bottom: calc(var(--sz2) * -0.925);
+  left: calc(var(--sz2) * -0.95);
+  transform-origin: center bottom;
+  --rays: #fff2;
+  animation: none;
+  opacity: 1;
+  display: none;
+}
+
+.btn:nth-child(2):before,
+.btn:nth-child(2):after {
+  animation-delay: 0s;
+}
+.btn:nth-child(3):before,
+.btn:nth-child(3):after {
+  animation-delay: var(--sp6);
+}
+.btn:nth-child(4):before,
+.btn:nth-child(4):after {
+  animation-delay: var(--sp4);
+}
+
+@keyframes ray-opac {
+  0%,
+  20%,
+  46%,
+  100% {
+    --opac: 0;
+    height: 0;
+  }
+  22%,
+  44% {
+    --opac: 1;
+    height: calc(var(--size) + calc(var(--size) / 8));
+  }
+}
+```
