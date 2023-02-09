@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef } from 'react';
 
 import classnames from 'classnames';
 import styles from '../index.module.scss';
+import Star from './star';
 export default function Banner() {
   const starRef = useRef<HTMLDivElement>(null);
 
@@ -30,7 +31,8 @@ export default function Banner() {
           <span>Loading..</span>
         </p>
       </div>
-      <div className={styles.stars} ref={starRef}></div>
+      <Star />
+      {/* <div className={styles.stars} ref={starRef}></div> */}
     </div>
   );
 }

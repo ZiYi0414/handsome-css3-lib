@@ -40,12 +40,20 @@ body {
   --maindark: #171717;
   --dark: #212121;
   --semidark: #2c2c2c;
+  --starbg: radial-gradient(
+    220% 105% at top center,
+    #1b2947 10%,
+    #75517d 40%,
+    #e96f92 65%,
+    #f7f7b6
+  );
 }
 [data-theme='dark'] {
   --background: black;
   --foreground: white;
   --primary: #f2f2f2;
   --lightgray: #2c2c2c;
+  --starbg: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
 a {
