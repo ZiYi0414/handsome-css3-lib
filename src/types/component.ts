@@ -11,6 +11,7 @@ export interface HSComponentProps {
   made_by: string;
   css: string;
   html: string;
+  theme: 'dark' | 'light';
 }
 
 export type PickContentProps<T extends ContentType> = T extends ContentType
