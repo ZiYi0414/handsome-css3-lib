@@ -37,7 +37,10 @@ export default function Type({ posts, type }: IProps) {
           <div className={styles.posts__prereview__heading}>
             {type.toUpperCase()}
           </div>
-          <div>Open-Source <span className='text-[#d23669]'> {type}</span> made with HTML and CSS</div>
+          <div>
+            Open-Source <span className="text-[#d23669]">{type}</span> made with
+            HTML and CSS
+          </div>
           <section>
             <div className={styles.posts__prereview__content}>
               {posts.map((e, index) => (
