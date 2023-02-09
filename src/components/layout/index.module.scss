@@ -4,12 +4,37 @@
   box-shadow: 1px 1px 1px #ced6e0;
   z-index: 9999;
   .header {
-  
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 70rem;
     height: 100%;
     margin: auto;
+  }
+}
+
+.sidemenu__wrap {
+  width: 320px;
+  padding: 50px;
+  .sidemenu__link {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 36px;
+    // border: 1px dashed #cbcbcb;
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 5px;
+    &:hover {
+      border-style: solid;
+      background: var(--lightgray);
+      border-color: #a0a0a0;
+      transition: all 0.25s;
+    }
+  }
+  .sidemenu__link__active {
+    background: var(--lightgray);
   }
 }

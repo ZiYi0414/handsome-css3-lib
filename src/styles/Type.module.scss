@@ -1,0 +1,24 @@
+.type__wrap {
+  display: flex;
+  background: var(--background);
+}
+.container {
+  width: 100%;
+  padding: 50px 30px;
+}
+
+.posts__prereview__heading {
+  font: 700 2em/1 Montserrat, sans-serif;
+  color: var(--primary);
+}
+
+.posts__prereview__content {
+  display: grid;
+  grid-gap: 20px 14px;
+  align-content: start;
+  justify-content: center;
+  align-items: start;
+  grid-template-columns: repeat(auto-fill, minmax(274px, 1fr));
+  margin-top: 20px;
+}
+
