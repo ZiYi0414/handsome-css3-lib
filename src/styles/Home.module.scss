@@ -29,6 +29,22 @@
 }
 .home__wrap {
   background: var(--background);
+  .home__title {
+    h2 {
+      font: 700 2.5em/1 Montserrat, sans-serif;
+      color: var(--primary);
+      line-height: 1.35;
+    }
+    p {
+      font: 700 1em/1 Montserrat, sans-serif;
+      font-style: oblique;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+    span {
+      font-size: 38px !important;
+    }
+  }
 }
 .container {
   max-width: 1200px;
