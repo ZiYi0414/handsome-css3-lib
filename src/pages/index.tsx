@@ -39,7 +39,10 @@ export default function Home({ components_data }: IProps) {
                   (e, index) => index < 4 && <Card post={e} key={index} />
                 )}
               </div>
-              <Link href="" className={styles.posts__see__all__link}>
+              <Link
+                href={component.index}
+                className={styles.posts__see__all__link}
+              >
                 查看全部
               </Link>
             </section>
