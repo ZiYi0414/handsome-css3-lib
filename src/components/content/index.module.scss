@@ -41,7 +41,7 @@
   }
 }
 
-.card {
+.card__wrap {
   position: relative;
   display: flex;
   justify-content: center;
@@ -53,11 +53,20 @@
   border: 2px dashed var(--primary);
   border-radius: 8px;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
+
   @media (min-width: 1025px) {
     &:nth-of-type(3n) {
       margin-right: 0;
     }
   }
+}
+.card__name {
+  padding: 4px;
+  font-family: Montserrat, sans-serif;
+}
+
+.card__dark {
+  background-color: var(--semidark);
 }
 
 .star__background {

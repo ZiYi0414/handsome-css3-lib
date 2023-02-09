@@ -1,18 +1,13 @@
 import classNames from 'classnames';
 import styles from '../index.module.scss';
 import styled, { StyledComponent } from 'styled-components';
+import { HSComponentProps } from 'types/component';
 interface ICardProps {
-  post: {
-    css: string;
-    html: string;
-    title: string;
-    slug?: string;
-    made_by: string;
-  };
+  post: HSComponentProps;
 }
 
 interface DivProps {
-  css: string
+  css: string;
 }
 const DivStyled = styled.div<DivProps>`
   ${props => props.css}
@@ -21,16 +16,24 @@ const DivStyled = styled.div<DivProps>`
 export default function Card({ post }: ICardProps) {
   return (
     <div>
-      <div className={styles.card}>
+      <div
+        className={classNames(
+          styles.card__wrap,
+          post?.theme === 'dark' && styles.card__dark
+        )}
+      >
         <DivStyled css={post.css}>
           <div
             id={post.title}
-            className={classNames(post.title)}
+            className={classNames(
+              post.title,
+              'flex items-center w-full h-full justify-center'
+            )}
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></div>
         </DivStyled>
       </div>
-      <div>{post?.title ?? 'nameless'}</div>
+      <div className={styles.card__name}>@{post?.title ?? 'nameless'}</div>
     </div>
   );
 }
