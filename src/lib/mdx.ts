@@ -38,7 +38,7 @@ export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
       html: '',
       css: ''
     };
-    const format = content.replaceAll('\n', '').split('```');
+    const format = content.split('```');
     format.forEach(e => {
       if (e.indexOf('html') != -1) {
         result.html = e.replace('html', '');
