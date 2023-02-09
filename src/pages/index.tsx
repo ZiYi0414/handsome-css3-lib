@@ -26,8 +26,41 @@ export default function Home({ components_data }: IProps) {
       <HomeLoading isLoaded={isLoaded} />
       <div className={styles.home__wrap}>
         <div className={styles.container}>
+          <div className={styles.home__title}>
+            <h2>
+              Amazingly handsome Open-Source UI components made with HTML and
+              CSS
+            </h2>
+            <p>
+              Thank you to everyone who contributes to the cause and art of open
+              source :)
+            </p>
+            <div className="flex justify-evenly text-center my-20">
+              <div className="text-center">
+                <div>
+                  <span className="iconfont icon-component1 mr-2"></span>
+                  <span>99+</span>
+                </div>
+                <i>已收集99+的超帅UI组件</i>
+              </div>
+              <div>
+                <div>
+                  <span className="iconfont icon-balance mr-2"></span>
+                  <span>MIT</span>
+                </div>
+                <i>完全开源授权 MIT License</i>
+              </div>
+              <div>
+                <div>
+                  <span className="iconfont icon-style mr-2"></span>
+                  <span>6</span>
+                </div>
+                <i>6+种类型UI组件</i>
+              </div>
+            </div>
+          </div>
           {components_data.map((component, index) => (
-            <section key={component.index}>
+            <section key={component.index} className="mb-16">
               <Link
                 className={styles.posts__prereview__heading}
                 href={component.index}
