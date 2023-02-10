@@ -17,7 +17,6 @@ const DivStyled = styled.div<DivProps>`
 export default function Card({ post }: ICardProps) {
   return (
     <article>
-      <Link href={`/buttons/${post.title}`}>
         <div
           className={classNames(
             styles.card__wrap,
@@ -35,7 +34,6 @@ export default function Card({ post }: ICardProps) {
             ></div>
           </DivStyled>
         </div>
-      </Link>
       <div className={styles.card__name}>@{post?.title ?? 'nameless'}</div>
     </article>
   );

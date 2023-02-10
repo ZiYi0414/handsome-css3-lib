@@ -1,13 +1,28 @@
+.header__bg {
+  position: absolute;
+  height: 100%;
+  width: 40%;
+  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+  background: #1b2947;
+}
+.header__title {
+  line-height: 80px;
+  color: var(--white);
+  text-align: right;
+  font-size: 2rem;
+  font-weight: bold;
+  z-index: 99;
+  font-family: Montserrat, sans-serif;
+}
 .header__wrap {
   width: 100vw;
   height: 80px;
-  box-shadow: 1px 1px 1px #ced6e0;
   z-index: 9999;
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70rem;
+    width: 1400px;
     height: 100%;
     margin: auto;
   }

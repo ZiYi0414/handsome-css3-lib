@@ -44,7 +44,9 @@ export default function Type({ posts, type }: IProps) {
           <section>
             <div className={styles.posts__prereview__content}>
               {posts.map((e, index) => (
-                <Card post={e} key={index} />
+                <Link href={`/${type}/${e.title}`} key={index}>
+                  <Card post={e} />
+                </Link>
               ))}
             </div>
           </section>

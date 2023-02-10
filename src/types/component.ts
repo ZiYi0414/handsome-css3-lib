@@ -12,6 +12,7 @@ export interface HSComponentProps {
   css: string;
   html: string;
   theme: 'dark' | 'light';
+  type: ContentType;
 }
 
 export interface SlugComponentProps {
