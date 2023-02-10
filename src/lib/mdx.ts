@@ -1,9 +1,11 @@
 import { readdirSync, readFileSync } from 'fs';
 import matter from 'gray-matter';
+import { bundleMDX } from 'mdx-bundler';
 import { join } from 'path';
 import { ContentType, PickContentProps } from 'types/component';
+import rehypePrism from 'rehype-prism-plus';
 
-export async function getFiles(type: ContentType) {
+export function getFiles(type: ContentType) {
   return readdirSync(join(process.cwd(), 'src', 'contents', type));
 }
 
@@ -17,11 +19,34 @@ export async function getFileBySlug(type: ContentType, slug: string) {
         join(process.cwd(), 'src', 'contents', `${type}.mdx`),
         'utf8'
       );
-
-  return {
-    frontmatter: {
-      slug: slug || null
+  const { data, content } = matter(source);
+  const { code } = await bundleMDX({
+    source: source,
+    mdxOptions(options, _) {
+      options.rehypePlugins = [
+        ...(options.rehypePlugins ?? []),
+        [rehypePrism, { showLineNumbers: true }]
+      ];
+      return options;
     }
+  });
+  const result = {
+    html: '',
+    css: ''
+  };
+  const format = content.split('```');
+  format.forEach(e => {
+    if (e.indexOf('html') != -1) {
+      result.html = e.replace('html', '');
+    } else if (e.indexOf('css') != -1) {
+      result.css = e.replace('css', '');
+    }
+  });
+  return {
+    code,
+    ...(data as any),
+    content,
+    ...result
   };
 }
 

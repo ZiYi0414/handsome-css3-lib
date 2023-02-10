@@ -5,7 +5,7 @@ import { ContentType } from 'types/component';
 import styles from './index.module.scss';
 
 interface IProps {
-  activeKey: ContentType;
+  activeKey?: ContentType;
 }
 export default function SideMenu({ activeKey }: IProps) {
   return (
@@ -13,7 +13,7 @@ export default function SideMenu({ activeKey }: IProps) {
       {components_data.map(post => (
         <Link
           key={post.index}
-          href={post.index}
+          href={`/${post.index}`}
           className={classNames(
             styles.sidemenu__link,
             activeKey === post.index && styles.sidemenu__link__active

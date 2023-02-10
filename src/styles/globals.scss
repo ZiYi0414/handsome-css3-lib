@@ -47,6 +47,17 @@ body {
     #e96f92 65%,
     #f7f7b6
   );
+  --code_bg: #1b2947;
+  --comment: #6272a4;
+  --code_fore: #f8f8f2;
+  --selection: #44475a;
+  --cyan: #8be9fd;
+  --green: #bd93f9;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --purple: #bd93f9;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
 }
 [data-theme='dark'] {
   --background: black;
@@ -54,6 +65,7 @@ body {
   --primary: #f2f2f2;
   --lightgray: #2c2c2c;
   --starbg: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  --code_bg: #1c1c1c;
 }
 
 a {

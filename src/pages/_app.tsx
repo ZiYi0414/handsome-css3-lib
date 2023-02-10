@@ -1,4 +1,5 @@
-import '../styles/globals.scss';
+import '@/styles/globals.scss';
+import '@/styles/dracula.scss';
 import '../../public/iconfont/iconfont.css';
 import { ThemeProvider } from 'next-themes';
 
