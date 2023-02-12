@@ -9,7 +9,7 @@ export default function Header() {
       <div className={styles.header__wrap}>
         <div className={styles.header}>
           <div className={styles.header__title}>
-            <i>AwA UI Components</i>
+            <i>AwA UI</i>
           </div>
           <div className="flex">
             <LinkGroup />

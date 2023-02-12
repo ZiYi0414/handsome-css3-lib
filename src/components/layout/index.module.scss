@@ -2,17 +2,15 @@
   position: absolute;
   height: 100%;
   width: 40%;
-  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
-  background: #1b2947;
 }
 .header__title {
   line-height: 80px;
-  color: var(--white);
   text-align: right;
   font-size: 2rem;
   font-weight: bold;
   z-index: 99;
   font-family: Montserrat, sans-serif;
+  text-shadow: 2px 0 #F9F8F8, -1px 0 var(--primary), -2px 0 green;
 }
 .header__wrap {
   width: 100vw;
@@ -22,7 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1400px;
+    width: 1200px;
     height: 100%;
     margin: auto;
   }
