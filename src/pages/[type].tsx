@@ -1,24 +1,18 @@
-import { useEffect, useRef } from 'react';
-import classnames from 'classnames';
 import Layout from 'layout/Layout';
 import Seo from 'Seo';
 import styles from '../styles/Type.module.scss';
-import { useRafFn } from '@/hooks/useRafFn';
-import HomeLoading from '@/components/loading';
 import useLoaded from 'hooks/useLoaded';
 import { Card, Banner } from 'content/index';
 import Link from 'next/link';
-
 import { components_data, HandsomeComponent } from '../common/exports_data';
 import {
   GetStaticPaths,
   GetStaticProps,
-  InferGetStaticPropsType
 } from 'next/types';
 import { getAllFilesFrontmatter, getFiles } from 'lib/mdx';
-
 import { ContentType, HSComponentProps } from 'types/component';
 import SideMenu from 'layout/SideMenu';
+import classNames from 'classnames';
 
 interface IProps {
   posts: HSComponentProps[];
@@ -30,10 +24,9 @@ export default function Type({ posts, type }: IProps) {
   return (
     <Layout>
       <Seo templateTitle="AwA" />
-      <HomeLoading isLoaded={isLoaded} />
-      <div className={styles.type__wrap}>
-        <SideMenu activeKey={type} />
-        <div className={styles.container}>
+      <div className={classNames(isLoaded && 'fade-in-start', styles.type__wrap)}>
+        <SideMenu activeKey={type} data-fade="1"/>
+        <div className={styles.container} data-fade="1">
           <div className={styles.posts__prereview__heading}>
             {type.toUpperCase()}
           </div>

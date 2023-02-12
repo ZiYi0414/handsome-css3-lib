@@ -1,6 +1,4 @@
 import { useEffect, useRef } from 'react';
-
-import classnames from 'classnames';
 import styles from '../index.module.scss';
 import Star from './star';
 export default function Banner() {

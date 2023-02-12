@@ -2,7 +2,6 @@ import Layout from 'layout/Layout';
 import Seo from 'Seo';
 import MDXComponents from '@/components/content/mdx/MDXComponents';
 import styles from '@/styles/Slug.module.scss';
-import HomeLoading from '@/components/loading';
 import useLoaded from 'hooks/useLoaded';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next/types';
@@ -34,10 +33,9 @@ export default function Slug({ post, type }: IProps) {
   return (
     <Layout>
       <Seo templateTitle="AwA" />
-      <HomeLoading isLoaded={isLoaded} />
-      <div className={styles.slug__wrap}>
-        <SideMenu activeKey={type} />
-        <div className={styles.container}>
+      <div className={classNames(isLoaded && 'fade-in-start', styles.slug__wrap)} >
+        <SideMenu activeKey={type} data-fade="1"/>
+        <div className={styles.container} data-fade="1">
           <article>
             <div
               className={classNames(
