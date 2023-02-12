@@ -1,0 +1,347 @@
+---
+title: skiny-jumping-gift
+made_by: jkantner
+theme: dark
+---
+
+```css
+.gift {
+  --red1: hsl(345, 100%, 48%);
+  --red2: hsl(345, 100%, 38%);
+  --white1: hsl(0, 0%, 100%);
+  --white2: hsl(0, 0%, 90%);
+  --blue: hsl(215, 100%, 20%);
+  font-size: calc(16px + (20 - 16) * (100vw - 320px) / (1280 - 320));
+  --dur: 1.5s;
+  position: relative;
+  width: 18em;
+  height: 18em;
+}
+.gift__bow,
+.gift__bow-center,
+.gift__bow-left,
+.gift__bow-right,
+.gift__box,
+.gift__lid,
+.gift__lid-shadow,
+.gift__star {
+  position: absolute;
+}
+.gift__bow-center,
+.gift__bow-left,
+.gift__bow-right {
+  background-color: var(--red2);
+}
+.gift__bow {
+  animation: bowBounce var(--dur) ease-in-out infinite;
+  bottom: 11em;
+  left: 7.5em;
+  width: 3em;
+  height: 2em;
+  transform-origin: 50% 230%;
+}
+.gift__bow-center {
+  border-radius: 1em;
+  width: 100%;
+  height: 100%;
+}
+.gift__bow-left,
+.gift__bow-right {
+  box-shadow: 0 0 0 0.7em var(--red1) inset;
+  top: 0.3em;
+  width: 4em;
+  height: 5em;
+  z-index: -1;
+}
+.gift__bow-left:before,
+.gift__bow-right:before {
+  background-color: var(--red1);
+  border-radius: inherit;
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+.gift__bow-left {
+  animation: bowLeftPivot var(--dur) ease-in-out infinite;
+  border-radius: 1.5em 0 3em 1em / 1.5em 0 3em 3.5em;
+  right: calc(100% - 0.75em);
+  transform: rotate(35deg);
+  transform-origin: 100% 15%;
+}
+.gift__bow-left:before {
+  clip-path: polygon(0 42%, 100% 12%, 100% 100%, 0 100%);
+}
+.gift__bow-right {
+  animation: bowRightPivot var(--dur) ease-in-out infinite;
+  border-radius: 0 1.5em 1em 3em / 0 1.5em 3.5em 3em;
+  left: calc(100% - 0.75em);
+  transform: rotate(-35deg);
+  transform-origin: 0% 15%;
+}
+.gift__bow-right:before {
+  clip-path: polygon(0 12%, 100% 42%, 100% 100%, 0 100%);
+}
+.gift__box,
+.gift__lid,
+.gift__lid-shadow {
+  transform-origin: 50% 100%;
+}
+.gift__box {
+  animation: boxBounce var(--dur) ease-in-out infinite;
+  background: linear-gradient(var(--red2), var(--red2)) 50% 50% / 3.3em 100% no-repeat,
+    var(--white2);
+  border-radius: 1.5em;
+  bottom: 0.5em;
+  left: 3.3em;
+  overflow: hidden;
+  width: 11.4em;
+  height: 9em;
+}
+.gift__lid,
+.gift__lid-shadow {
+  border-radius: 1em;
+  width: 13em;
+  height: 3.3em;
+}
+.gift__lid {
+  animation: lidBounce var(--dur) ease-in-out infinite;
+  background: linear-gradient(var(--red1), var(--red1)) 50% 50% / 3.3em 100% no-repeat,
+    var(--white1);
+  bottom: 8.7em;
+  left: 2.5em;
+}
+.gift__lid-shadow {
+  animation: lidShadowBounce var(--dur) ease-in-out infinite;
+  background-color: hsla(0, 0%, 0%, 0.1);
+  top: -1.5em;
+  left: -1em;
+}
+.gift__star {
+  animation: starRotateCW var(--dur) ease-in infinite;
+  background-color: var(--white1);
+  clip-path: polygon(
+    50% 0,
+    65% 35%,
+    100% 50%,
+    65% 65%,
+    50% 100%,
+    35% 65%,
+    0 50%,
+    35% 35%
+  );
+  transform: scale(0);
+}
+.gift__star--2,
+.gift__star--4,
+.gift__star--5 {
+  animation-name: starRotateCCW;
+}
+.gift__star--1 {
+  animation-delay: calc(var(--dur) * 0.5);
+  top: 0;
+  left: 12.5em;
+  width: 1.5em;
+  height: 1.5em;
+}
+.gift__star--2 {
+  animation-delay: calc(var(--dur) * 0.125);
+  top: 2em;
+  left: 10em;
+  width: 1.75em;
+  height: 1.75em;
+}
+.gift__star--3 {
+  animation-delay: calc(var(--dur) * 0.25);
+  top: 8em;
+  left: 0;
+  width: 1.25em;
+  height: 1.25em;
+}
+.gift__star--4 {
+  top: 10.5em;
+  right: 0;
+  width: 1.75em;
+  height: 1.75em;
+}
+.gift__star--5 {
+  animation-delay: calc(var(--dur) * 0.375);
+  top: 12em;
+  left: 1.8em;
+  width: 2.5em;
+  height: 2.5em;
+}
+
+/* Animations */
+@keyframes bowBounce {
+  from,
+  50% {
+    transform: translateY(0) rotate(0);
+  }
+  62.5% {
+    animation-timing-function: ease-in;
+    transform: translateY(75%) rotate(0);
+  }
+  68.75% {
+    animation-timing-function: ease-out;
+    transform: translateY(-37.5%) rotate(15deg);
+  }
+  75% {
+    animation-timing-function: ease-in-out;
+    transform: translateY(-150%) rotate(5deg);
+  }
+  87.5% {
+    transform: translateY(65%) rotate(-3deg);
+  }
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes bowLeftPivot {
+  from,
+  50% {
+    transform: rotate(35deg);
+  }
+  62.5% {
+    transform: rotate(45deg);
+  }
+  75% {
+    transform: rotate(30deg);
+  }
+  87.5% {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(35deg);
+  }
+}
+@keyframes bowRightPivot {
+  from,
+  50% {
+    transform: rotate(-35deg);
+  }
+  62.5% {
+    transform: rotate(-45deg);
+  }
+  75% {
+    transform: rotate(-34deg);
+  }
+  87.5% {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(-35deg);
+  }
+}
+@keyframes boxBounce {
+  from,
+  50% {
+    transform: translateY(0) scale(1, 1);
+  }
+  62.5% {
+    transform: translateY(4%) scale(1.12, 0.89);
+  }
+  75% {
+    transform: translateY(-11%) scale(0.92, 1.1);
+  }
+  87.5% {
+    transform: translateY(0) scale(1.05, 0.9);
+  }
+  to {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+@keyframes lidBounce {
+  from,
+  50% {
+    transform: translateY(0) scale(1, 1) rotate(0);
+  }
+  62.5% {
+    animation-timing-function: ease-in;
+    transform: translateY(45%) scale(1.14, 0.95) rotate(0);
+  }
+  68.75% {
+    animation-timing-function: ease-out;
+    transform: translateY(-22.5%) scale(1.05, 1.03) rotate(15deg);
+  }
+  75% {
+    animation-timing-function: ease-in-out;
+    transform: translateY(-90%) scale(0.96, 1.1) rotate(5deg);
+  }
+  87.5% {
+    transform: translateY(30%) scale(1.12, 0.93) rotate(-3deg);
+  }
+  to {
+    transform: translateY(0) scale(1, 1) rotate(0);
+  }
+}
+@keyframes lidShadowBounce {
+  from,
+  50% {
+    transform: translateY(0) scale(1, 1) rotate(0);
+  }
+  62.5% {
+    animation-timing-function: ease-in;
+    transform: translateY(10%) scale(1.14, 0.95) rotate(0);
+  }
+  68.75% {
+    animation-timing-function: ease-out;
+    transform: translateY(-10%) scale(1.05, 1.03) rotate(15deg);
+  }
+  75% {
+    animation-timing-function: ease-in-out;
+    transform: translateY(-30%) scale(0.96, 1.1) rotate(5deg);
+  }
+  87.5% {
+    transform: translateY(10%) scale(1.12, 0.93) rotate(-3deg);
+  }
+  to {
+    transform: translateY(0) scale(1, 1) rotate(0);
+  }
+}
+@keyframes starRotateCW {
+  from {
+    transform: scale(0) rotate(0);
+  }
+  25% {
+    animation-timing-function: ease-out;
+    transform: scale(1) rotate(0.25turn);
+  }
+  50%,
+  to {
+    transform: scale(0) rotate(0.5turn);
+  }
+}
+@keyframes starRotateCCW {
+  from {
+    transform: scale(0) rotate(0);
+  }
+  25% {
+    animation-timing-function: ease-out;
+    transform: scale(1) rotate(-0.25turn);
+  }
+  50%,
+  to {
+    transform: scale(0) rotate(-0.5turn);
+  }
+}
+```
+
+```html
+<div class="gift">
+  <div class="gift__bow">
+    <div class="gift__bow-left"></div>
+    <div class="gift__bow-right"></div>
+    <div class="gift__bow-center"></div>
+  </div>
+  <div class="gift__box">
+    <div class="gift__lid-shadow"></div>
+  </div>
+  <div class="gift__lid"></div>
+  <div class="gift__star gift__star--1"></div>
+  <div class="gift__star gift__star--2"></div>
+  <div class="gift__star gift__star--3"></div>
+  <div class="gift__star gift__star--4"></div>
+  <div class="gift__star gift__star--5"></div>
+</div>
+```

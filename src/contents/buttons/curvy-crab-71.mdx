@@ -1,0 +1,40 @@
+---
+title: curvy-crab-71
+made_by: biswacpcode
+theme: dark
+---
+
+```css
+button {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+button::before {
+  margin-left: auto;
+}
+
+button::after, button::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  transition: 0.5s;
+}
+
+button:hover::after, button:hover::before {
+  width: 100%;
+}
+```
+
+```html
+<button>
+  HOVER ME
+</button>
+```
