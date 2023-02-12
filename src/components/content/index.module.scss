@@ -41,36 +41,6 @@
   }
 }
 
-.scroll__title {
-  width: 1200px;
-  color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.06;
-  font-size: 40px;
-  letter-spacing: -0.02em;
-}
-
-.scroll__mask {
-  height: 46px;
-  position: relative;
-  // overflow: hidden;
-  span {
-    display: block;
-    box-sizing: border-box;
-    position: absolute;
-    top: 46px;
-    background-size: 100% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-  }
-  span[data-up] {
-    transform: translateY(-100%);
-  }
-  span[data-shop] {
-    transform: translateY(-200%);
-  }
-}
-
 .card__wrap {
   position: relative;
   display: flex;
@@ -141,7 +111,6 @@
   font-size: 60px;
   line-height: 1;
   font-weight: bold;
-  letter-spacing: 0;
   -webkit-font-smoothing: inherit;
 }
 

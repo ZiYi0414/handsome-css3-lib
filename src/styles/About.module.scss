@@ -1,0 +1,20 @@
+.avator{
+  width: 99px;
+  height: 99px;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 25%;
+  overflow: hidden;
+  border: 1px solid var(--semidark);
+  cursor: pointer;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    margin: 20px 0;
+    font-size: 16px;
+  }
+}

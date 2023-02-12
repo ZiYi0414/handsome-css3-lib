@@ -3,7 +3,6 @@ import * as React from 'react';
 import Layout from '@/components/layout/Layout';
 import Link from 'next/link';
 import Seo from 'Seo';
-import Star from 'content/star';
 
 export default function NotFoundPage() {
   return (
@@ -15,9 +14,8 @@ export default function NotFoundPage() {
           <div className="typing-demo">There's nothing here.</div>
           <div className="title-404">你在这里想找到什么呢？宝贝</div>
           <Link href={'/'} className="text-[#d23669] mt-4">
-            Go Back ( )
+            Go Home ( )
           </Link>
-          <Star />
         </section>
       </main>
     </Layout>

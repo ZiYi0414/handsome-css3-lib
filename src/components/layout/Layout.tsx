@@ -2,12 +2,20 @@ import * as React from 'react';
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  nofooter = false,
+  noheader = false
+}: {
+  children: React.ReactNode;
+  nofooter?: boolean;
+  noheader?: boolean;
+}) {
   return (
     <>
-      <Header />
+      {!noheader && <Header />}
       <main className="w-full">{children}</main>
-      <Footer />
+      {!nofooter && <Footer />}
     </>
   );
 }

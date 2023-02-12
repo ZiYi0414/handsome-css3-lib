@@ -41,7 +41,7 @@ export default function Home({ components_data }: IProps) {
                   <span className="iconfont icon-component1 mr-2"></span>
                   <span>99+</span>
                 </div>
-                <i>已收集99+的超帅UI组件</i>
+                <i>已收集 99+ 的超帅 UI 组件</i>
               </div>
               <div>
                 <div>
@@ -55,7 +55,7 @@ export default function Home({ components_data }: IProps) {
                   <span className="iconfont icon-style mr-2"></span>
                   <span>6</span>
                 </div>
-                <i>6+种类型UI组件</i>
+                <i>6+ 种类型 UI 组件</i>
               </div>
             </div>
           </div>
