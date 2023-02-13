@@ -1,0 +1,165 @@
+---
+title: webpack
+made_by: AsiaInfo
+---
+
+```css
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.webpack-logo {
+  width: 100%;
+  height: 200px;
+  /* border: 1px solid red; */
+
+  position: relative;
+}
+.cube-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* 关键,不要用 transform */
+  margin: -25px 0px 0px -25px;
+  width: 50px;
+  height: 50px;
+  /* background-color: red; */
+
+  /* 启用3D空间 */
+  transform-style: preserve-3d;
+  transform: rotateX(-33.5deg) rotateY(45deg);
+  /* 帧动画 */
+  animation: innerLoop 4s ease-in-out infinite;
+}
+
+.cube-inner li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #175d96;
+  border: 1px solid white;
+}
+
+.cube-inner .top {
+  transform: rotateX(90deg) translateZ(25px);
+}
+
+.cube-inner .bottom {
+  transform: rotateX(-90deg) translateZ(25px);
+}
+
+.cube-inner .front {
+  transform: rotateX(0deg) translateZ(25px);
+}
+
+.cube-inner .back {
+  transform: rotateX(-180deg) translateZ(25px);
+}
+.cube-inner .left {
+  transform: rotateY(-90deg) translateZ(25px);
+}
+
+.cube-inner .right {
+  transform: rotateY(90deg) translateZ(25px);
+}
+
+/* cube outer */
+.cube-outer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* 关键,不要用 transform */
+  margin: -50px 0px 0px -50px;
+  width: 100px;
+  height: 100px;
+
+  /* 启用3D空间 */
+  transform-style: preserve-3d;
+  transform: rotateX(-33.5deg) rotateY(45deg);
+  /* 帧动画 */
+  animation: outerLoop 4s ease-in-out infinite;
+}
+
+.cube-outer li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(141, 214, 249, 0.5);
+  border: 1px solid white;
+}
+
+.cube-outer .top {
+  transform: rotateX(90deg) translateZ(50px);
+}
+
+.cube-outer .bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+.cube-outer .front {
+  transform: rotateX(0deg) translateZ(50px);
+}
+
+.cube-outer .back {
+  transform: rotateX(-180deg) translateZ(50px);
+}
+.cube-outer .left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+
+.cube-outer .right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+
+@keyframes outerLoop {
+  0% {
+    transform: rotateX(-33.5deg) rotateY(45deg);
+  }
+
+  50%,
+  100% {
+    transform: rotateX(-33.5deg) rotateY(405deg);
+  }
+}
+
+@keyframes innerLoop {
+  0% {
+    transform: rotateX(-33.5deg) rotateY(45deg);
+  }
+
+  50%,
+  100% {
+    transform: rotateX(-33.5deg) rotateY(-315deg);
+  }
+}
+```
+
+```html
+<div class="webpack-logo">
+  <!-- cube-inner -->
+  <ul class="cube-inner">
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="front"></li>
+    <li class="back"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+  </ul>
+
+  <!-- cube-outer -->
+  <ul class="cube-outer">
+    <li class="top"></li>
+    <li class="bottom"></li>
+    <li class="front"></li>
+    <li class="back"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+  </ul>
+</div>
+```
