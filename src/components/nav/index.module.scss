@@ -38,6 +38,9 @@
 .phoneGroup__wrap {
   display: flex;
   margin-right: 10px;
+  @media (min-width: 1200px) {
+    display: none;
+  }
   .bar__btn {
     display: flex;
     justify-content: center;
@@ -73,6 +76,7 @@
       bottom: 0;
     }
   }
+
 }
 
 .nav__link {

@@ -4,11 +4,15 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
+  // grid-template-columns: repeat(auto-fill, minmax(300px, 1.2fr));
   grid-template-rows: 450px auto;
   gap: 15px 15px;
   width: 100%;
   min-height: 70vh;
   padding: 15px 25px;
+  @media (max-width: 1025px) {
+     grid-template-columns: repeat(auto-fill, minmax(300px, 1.2fr));
+  }
   pre {
     min-height: 135px;
     max-height: 600px;

@@ -6,7 +6,7 @@
   z-index: 99;
   font-family: Montserrat, sans-serif;
   text-shadow: 2px 0 #f9f8f8, -1px 0 var(--primary), -2px 0 green;
-  @media (max-width: 460px) {
+  @media (max-width: 1200px) {
     font-size: 1.75rem;
     margin-left: 20px;
   }
@@ -58,6 +58,9 @@
   }
   .sidemenu__link__active {
     background: var(--lightgray);
+  }
+  @media (max-width: 460px) {
+    display: none;
   }
 }
 
