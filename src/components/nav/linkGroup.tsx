@@ -10,6 +10,11 @@ export default function linkGroup() {
           </Link>
         </li>
         <li className="mx-4 cursor-pointer">
+          <Link href={'/show-all'} className={styles.nav__link} data-name="😍 Show All">
+            😍 Show All
+          </Link>
+        </li>
+        <li className="mx-4 cursor-pointer">
           <Link
             href={'/about'}
             className={styles.nav__link}

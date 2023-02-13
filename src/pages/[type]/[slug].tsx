@@ -13,6 +13,7 @@ import { ParsedUrlQuery } from 'querystring';
 import React from 'react';
 import classNames from 'classnames';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 interface IProps {
   post: SlugComponentProps;
@@ -26,6 +27,7 @@ const DivStyled = styled.div<DivProps>`
 `;
 export default function Slug({ post, type }: IProps) {
   const isLoaded = useLoaded();
+  const router = useRouter();
   const Component = React.useMemo(
     () => getMDXComponent(post.code),
     [post.code]
@@ -33,35 +35,47 @@ export default function Slug({ post, type }: IProps) {
   return (
     <Layout>
       <Seo templateTitle="AwA" />
-      <div className={classNames(isLoaded && 'fade-in-start', styles.slug__wrap)} >
-        <SideMenu activeKey={type} data-fade="1"/>
-        <div className={styles.container} data-fade="1">
-          <article>
-            <div
-              className={classNames(
-                styles.card__wrap,
-                post?.theme === 'dark' && styles.card__dark
-              )}
+      <div
+        className={classNames(isLoaded && 'fade-in-start', styles.slug__wrap)}
+      >
+        <SideMenu activeKey={type} data-fade="1" />
+        <div className="w-full" data-fade="1">
+          <div className="pl-5">
+            <button
+              className={classNames(styles.loadmore__btn)}
+              onClick={() => router.back()}
             >
-              <DivStyled css={post.css}>
-                <div
-                  id={post.title}
-                  className={classNames(
-                    post.title,
-                    'flex items-center w-full h-full justify-center'
-                  )}
-                  dangerouslySetInnerHTML={{ __html: post.html }}
-                ></div>
-              </DivStyled>
-            </div>
-          </article>
-          <Component
-            components={
-              {
-                ...MDXComponents
-              } as any
-            }
-          />
+              ← cd ..
+            </button>
+          </div>
+          <div className={styles.container}>
+            <article>
+              <div
+                className={classNames(
+                  styles.card__wrap,
+                  post?.theme === 'dark' && styles.card__dark
+                )}
+              >
+                <DivStyled css={post.css}>
+                  <div
+                    id={post.title}
+                    className={classNames(
+                      post.title,
+                      'flex items-center w-full h-full justify-center'
+                    )}
+                    dangerouslySetInnerHTML={{ __html: post.html }}
+                  ></div>
+                </DivStyled>
+              </div>
+            </article>
+            <Component
+              components={
+                {
+                  ...MDXComponents
+                } as any
+              }
+            />
+          </div>
         </div>
       </div>
     </Layout>
