@@ -50,7 +50,7 @@ pre::-webkit-scrollbar {
   width: 65%;
   height: 2rem;
   line-height: 2rem;
-  clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(30px 0%, 100% 0%, 100% 100%, 0% 100%);
   padding-left: 40px;
   color: #fff;
   @apply select-none font-medium;

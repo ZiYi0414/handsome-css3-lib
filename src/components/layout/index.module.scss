@@ -10,7 +10,7 @@
   font-weight: bold;
   z-index: 99;
   font-family: Montserrat, sans-serif;
-  text-shadow: 2px 0 #F9F8F8, -1px 0 var(--primary), -2px 0 green;
+  text-shadow: 2px 0 #f9f8f8, -1px 0 var(--primary), -2px 0 green;
 }
 .header__wrap {
   width: 100vw;
@@ -27,6 +27,8 @@
 }
 
 .sidemenu__wrap {
+  position: sticky;
+  top: 0;
   width: 320px;
   padding: 50px;
   .sidemenu__link {
@@ -53,7 +55,7 @@
 }
 
 .footer {
-  .avator{
+  .avator {
     width: 99px;
     height: 99px;
     margin: 20px auto;

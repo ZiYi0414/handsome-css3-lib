@@ -8,7 +8,7 @@
   gap: 15px 15px;
   width: 100%;
   min-height: 70vh;
-  padding: 25px;
+  padding: 15px 25px;
   pre {
     min-height: 135px;
     max-height: 600px;
@@ -47,4 +47,26 @@
 
 .card__dark {
   background-color: var(--semidark);
+}
+
+.loadmore__btn {
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 16px;
+  // border: 1px dashed #cbcbcb;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  color: var(--primary);
+  background: var(--lightgray);
+  margin-bottom: 5px;
+  @apply px-4;
+  &:hover {
+    border-style: solid;
+    background: var(--primary);
+    color: var(--lightgray);
+    border-color: #a0a0a0;
+    transition: all 0.25s;
+  }
 }
