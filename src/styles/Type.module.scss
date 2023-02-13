@@ -22,3 +22,24 @@
   margin-top: 20px;
 }
 
+.loadmore__btn {
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 16px;
+  // border: 1px dashed #cbcbcb;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  color: var(--primary);
+  background: var(--lightgray);
+  margin-bottom: 5px;
+  @apply px-4 my-12;
+  &:hover {
+    border-style: solid;
+    background: var(--primary);
+    color: var(--lightgray);
+    border-color: #a0a0a0;
+    transition: all 0.25s;
+  }
+}

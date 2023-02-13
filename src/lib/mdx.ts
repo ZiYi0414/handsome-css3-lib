@@ -77,6 +77,7 @@ export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
         ...(data as any),
         content,
         ...result,
+        type: type,
         slug: postSlug.replace('.mdx', '')
       },
       ...allPosts
