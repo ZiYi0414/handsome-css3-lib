@@ -34,6 +34,9 @@
       font: 700 2.5em/1 Montserrat, sans-serif;
       color: var(--primary);
       line-height: 1.35;
+      @media (max-width: 420px) {
+        font-size: 2em;
+      }
     }
     p {
       font: 700 1em/1 Montserrat, sans-serif;
@@ -44,6 +47,14 @@
     span {
       font-size: 38px !important;
     }
+  }
+  .home__subtitle {
+    display: grid;
+    grid-gap: 20px 14px;
+    align-content: start;
+    justify-content: center;
+    align-items: start;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 .container {

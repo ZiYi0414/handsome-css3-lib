@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { components_data, HandsomeComponent } from '../common/exports_data';
 import { GetStaticProps, InferGetStaticPropsType } from 'next/types';
 import { getAllFilesFrontmatter } from 'lib/mdx';
+import classNames from 'classnames';
 
 interface IProps {
   components_data: HandsomeComponent[];
@@ -35,7 +36,12 @@ export default function Home({ components_data }: IProps) {
               Thank you to everyone who contributes to the cause and art of open
               source :)
             </p>
-            <div className="flex justify-evenly text-center my-20">
+            <div
+              className={classNames(
+                styles.home__subtitle,
+                'flex justify-evenly text-center my-20'
+              )}
+            >
               <div className="text-center">
                 <div>
                   <span className="iconfont icon-component1 mr-2"></span>

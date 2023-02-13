@@ -8,7 +8,7 @@ export default function IconGroup() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className={styles.iconGroup__warp}>
+    <div className={styles.iconGroup__wrap}>
       <UnstyledLink href={'https://github.com/ZiYi0414/handsome-css3-lib'}>
         <button className="flex flex-col">
           <div className="flex justify-center items-center">
