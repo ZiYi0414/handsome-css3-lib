@@ -1,4 +1,19 @@
-.avator{
+.about__wrap {
+  margin-top: 80px;
+  @media (max-width: 760px) {
+    margin-top: 10px;
+    .title {
+      font-size: 1.5em;
+      text-align: center;
+    }
+    .content {
+      width: 90%;
+      margin: 0 auto;
+      align-items: start;
+    }
+  }
+}
+.avator {
   width: 99px;
   height: 99px;
   margin: 20px auto;

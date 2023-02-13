@@ -19,12 +19,15 @@ export default function About() {
         <section
           className={classNames(
             isLoaded && 'fade-in-start',
-            'flex justify-center items-center flex-col h-[70vh]'
+            styles.about__wrap,
+            'flex justify-center items-center flex-col'
           )}
         >
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           <div data-fade="1">
-            <div className="typing-demo">About Handsome-css-lib.</div>
+            <div className={classNames(styles.title, 'typing-demo')}>
+              About Handsome-css-lib.
+            </div>
             <div className={styles.avator}>
               <NextImage
                 src={Avator}

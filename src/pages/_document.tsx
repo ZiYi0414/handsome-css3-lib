@@ -32,11 +32,15 @@ class MyDocument extends Document {
           {/* <script dangerouslySetInnerHTML={MyDocument.getAnalyticsTag()} /> */}
           <link
             rel="stylesheet"
-            href="https://fonts.googlefonts.cn/css?family=Comfortaa"
+            href="https://fonts.googlefonts.cn/css?family=Comfortaa&display=swap"
           ></link>
           <link
             rel="stylesheet"
-            href="https://fonts.googlefonts.cn/css?family=Monoton"
+            href="https://fonts.googlefonts.cn/css?family=Monoton&display=swap"
+          ></link>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap"
           ></link>
         </Head>
         <body>
