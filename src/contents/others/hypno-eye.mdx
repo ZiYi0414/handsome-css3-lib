@@ -1,0 +1,74 @@
+---
+title: hypno-eye
+made_by: schwiiiii
+---
+
+```css
+.layer {
+  transform: rotate(45deg);
+  width: 188px;
+  aspect-ratio: 1 / 1;
+  background-color: hsla(0deg, 0%, 0%, 20%);
+  position: relative;
+  animation: 12s spin infinite ease-in-out alternate;
+  overflow: hidden;
+  border-radius: 100% 0;
+}
+
+.layer > .layer {
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%) rotate(var(--rot));
+}
+
+@property --rot {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 3deg;
+}
+
+@keyframes spin {
+  0% {
+    --rot: -32deg;
+  }
+  100% {
+    --rot: 32deg;
+  }
+}
+```
+
+```html
+<div class="layer">
+  <div class="layer">
+    <div class="layer">
+      <div class="layer">
+        <div class="layer">
+          <div class="layer">
+            <div class="layer">
+              <div class="layer">
+                <div class="layer">
+                  <div class="layer">
+                    <div class="layer">
+                      <div class="layer">
+                        <div class="layer">
+                          <div class="layer">
+                            <div class="layer">
+                              <div class="layer"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```

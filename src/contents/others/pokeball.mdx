@@ -1,0 +1,104 @@
+---
+title: pokeball
+made_by: andreasnylin
+---
+
+```css
+.ball {
+  --ball-size: 188px;
+  --btn-size: calc(var(--ball-size) * .38);
+  --stripe-height: calc(var(--ball-size) * .06);
+  --shadow-width: calc(var(--ball-size) / 10);
+  --shadow-color: rgba(0,0,0,.075);
+  --bg-color: #2196f3;
+  --bg-color2: #0b77cd;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: var(--ball-size);
+  height: var(--ball-size);
+  border-radius: 50%;
+}
+
+.top {
+  height: calc(var(--ball-size) / 2 - (var(--stripe-height) / 2));
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+  background: red;
+  box-shadow: var(--shadow-width) 0 0 var(--shadow-color) inset;
+}
+
+.top::after {
+  content: '';
+  position: absolute;
+  top: calc(11%);
+  left: calc(61%);
+  width: calc(var(--ball-size) * .3);
+  height: calc(var(--ball-size) * .17);
+  border-radius: 50%;
+  background-color: rgba(255,255,255,.7);
+  transform: rotate(40deg);
+}
+
+.mid {
+  align-self: center;
+  height: var(--stripe-height);
+  width: calc(var(--ball-size) * .96);
+  100%;
+  background: black;
+}
+
+.bottom {
+  height: calc(var(--ball-size) / 2 - (var(--stripe-height) / 2));
+  border-bottom-left-radius: 50% 100%;
+  border-bottom-right-radius: 50% 100%;
+  background: white;
+  box-shadow: var(--shadow-width) calc(var(--shadow-width) * -.2) 0 var(--shadow-color) inset;
+}
+
+.bottom::after {
+  content: '';
+  position: absolute;
+  top: calc(50% + var(--ball-size) / 2.25);
+  left: calc(50% - var(--ball-size) / 2.1);
+  width: calc(var(--ball-size) * .8);
+  height: calc(var(--ball-size) * .1);
+  border-radius: 50%;
+  background-color: rgba(0,0,0,.075);
+  z-index: -1;
+}
+
+.btn {
+  position: absolute;
+  top: calc(50% - var(--btn-size) / 2);
+  left: calc(50% - var(--btn-size) / 2);
+  width: var(--btn-size);
+  height: var(--btn-size);
+  border-radius: 50%;
+  background: white;
+  border: solid var(--stripe-height) black;
+  box-shadow: 1px 0px 0px black inset;
+}
+
+.btn:after {
+  --size: calc(var(--btn-size) * .45);
+  content: '';
+  position: absolute;
+  top: calc(50% - var(--size) / 2);
+  left: calc(50% - var(--size) / 2);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: white;
+  border: solid 2px #666;
+}
+```
+
+```html
+<div class="ball">
+  <div class="top"></div>
+  <div class="mid"></div>
+  <div class="bottom"></div>
+  <div class="btn"></div>
+</div>
+```
