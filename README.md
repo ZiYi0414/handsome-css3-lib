@@ -10,3 +10,14 @@ yarn dev
 ```
 
 Open [http://localhost:8204](http://localhost:8204) with your browser to see the result.
+
+# 预览
+
+## web 主页
+![预览](./.github/1.png)
+
+## web 分类
+![预览](./.github/2.png)
+
+## web 详情
+![预览](./.github/3.png)
