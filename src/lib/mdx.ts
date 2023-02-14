@@ -45,7 +45,6 @@ export async function getFileBySlug(type: ContentType, slug: string) {
   return {
     code,
     ...(data as any),
-    content,
     ...result
   };
 }
@@ -75,7 +74,6 @@ export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
     const res = [
       {
         ...(data as any),
-        content,
         ...result,
         type: type,
         slug: postSlug.replace('.mdx', '')
