@@ -10,27 +10,29 @@ interface IProps {
 export default function SideMenu({ activeKey }: IProps) {
   return (
     <div className={styles.sidemenu__wrap}>
-      <Link
-        href={`/show-all`}
-        className={classNames(
-          styles.sidemenu__link,
-          activeKey === 'ALL' && styles.sidemenu__link__active
-        )}
-      >
-        全部 All
-      </Link>
-      {components_data.map(post => (
+      <div className={styles.sticky__wrap}>
         <Link
-          key={post.index}
-          href={`/${post.index}`}
+          href={`/show-all`}
           className={classNames(
             styles.sidemenu__link,
-            activeKey === post.index && styles.sidemenu__link__active
+            activeKey === 'ALL' && styles.sidemenu__link__active
           )}
         >
-          {post.type}
+          全部 All
         </Link>
-      ))}
+        {components_data.map(post => (
+          <Link
+            key={post.index}
+            href={`/${post.index}`}
+            className={classNames(
+              styles.sidemenu__link,
+              activeKey === post.index && styles.sidemenu__link__active
+            )}
+          >
+            {post.type}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

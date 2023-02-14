@@ -50,6 +50,9 @@ export default function Slug({ post, type }: IProps) {
           </div>
           <div className={styles.container}>
             <article>
+              <div className={styles.content__title}>
+                {post.made_by} @ {post.title}
+              </div>
               <div
                 className={classNames(
                   styles.card__wrap,

@@ -11,7 +11,7 @@
   min-height: 70vh;
   padding: 15px 25px;
   @media (max-width: 1025px) {
-     grid-template-columns: repeat(auto-fill, minmax(300px, 1.2fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1.2fr));
   }
   pre {
     min-height: 135px;
@@ -73,4 +73,16 @@
     border-color: #a0a0a0;
     transition: all 0.25s;
   }
+}
+.container {
+  article {
+    position: relative;
+  }
+}
+
+.content__title {
+  position: absolute;
+  margin: 10px;
+  color: var(--background);
+  z-index: 9999;
 }

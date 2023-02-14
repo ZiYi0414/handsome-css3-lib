@@ -34,7 +34,7 @@ export default function Card({ post }: ICardProps) {
             ></div>
           </DivStyled>
         </div>
-      <div className={styles.card__name}>@{post?.title ?? 'nameless'}</div>
+      <div className={styles.card__name}>@{post?.made_by ?? 'nameless'}</div>
     </article>
   );
 }
