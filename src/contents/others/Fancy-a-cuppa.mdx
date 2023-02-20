@@ -1,0 +1,168 @@
+---
+title: Fancy-a-cuppa
+made_by: Chris-Smith
+theme: dark
+---
+
+```css
+.container {
+  position: relative;
+  top: 50px;
+}
+.cup {
+  position: relative;
+  width: 280px;
+  height: 300px;
+  background: linear-gradient(to right, #f9f9f9, #c6c6c6 60%, #c1c1c1);
+  border-radius: 0 0 40% 40%;
+}
+
+/* holds the rim and inside of the cup and the 'tea' */
+.rim {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to right, #f9f9f9, #c6c6c6);
+  border-radius: 50%;
+}
+.inside {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 15px);
+  height: 50px;
+  background: linear-gradient(to left, #f9f9f9, #c6c6c6);
+  border-radius: 50%;
+  overflow: hidden;
+}
+.tea {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #c57e65, #dd7048);
+  border-radius: 50%;
+}
+.handle {
+  position: absolute;
+  top: 35px;
+  right: -70px;
+  width: 160px;
+  height: 180px;
+  border: 25px solid #c1c1c1;
+  border-left: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  border-radius: 50%;
+  transform: rotate(42deg);
+}
+.saucer {
+  position: absolute;
+  bottom: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 180px;
+  background: linear-gradient(to right, #f9f9f9, #c6c6c6);
+  border-radius: 50%;
+  box-shadow: 0 35px 25px rgba(0 128 0 / 0.1);
+}
+.saucer::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 50%;
+  box-shadow: 25px 25px 35px 25px rgba(0 0 0 / 0.6);
+}
+.saucer::after {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  bottom: 30px;
+  right: 30px;
+  background: radial-gradient(rgba(0 0 0 / 0.4) 25%, transparent, transparent);
+  border-radius: 50%;
+}
+.steam {
+  position: relative;
+  display: flex;
+  z-index: 1;
+  padding: 0 20px;
+}
+.steam span {
+  display: block;
+  position: relative;
+  bottom: 50px;
+  margin: 0 2px 50px;
+  min-width: 7px;
+  height: 120px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(12px);
+  animation: steam 5s linear infinite;
+  animation-delay: calc(var(--i) * -0.75s);
+}
+@keyframes steam {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-200px) scaleX(5);
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(-400px) scaleX(8);
+  }
+}
+```
+
+```html
+<div class="container">
+  <div class="saucer"></div>
+  <div class="cup">
+    <div class="rim">
+      <div class="steam">
+        <span style="--i: 1"></span>
+        <span style="--i: 3"></span>
+        <span style="--i: 16"></span>
+        <span style="--i: 5"></span>
+        <span style="--i: 13"></span>
+        <span style="--i: 6"></span>
+        <span style="--i: 19"></span>
+        <span style="--i: 8"></span>
+        <span style="--i: 10"></span>
+        <span style="--i: 18"></span>
+        <span style="--i: 8"></span>
+        <span style="--i: 17"></span>
+        <span style="--i: 11"></span>
+        <span style="--i: 7"></span>
+        <span style="--i: 14"></span>
+        <span style="--i: 2"></span>
+        <span style="-i: 9"></span>
+        <span style="--i: 12"></span>
+        <span style="--i: 15"></span>
+        <span style="--i: 4"></span>
+      </div>
+      <div class="inside">
+        <div class="tea"></div>
+      </div>
+    </div>
+    <div class="handle"></div>
+  </div>
+</div>
+```
