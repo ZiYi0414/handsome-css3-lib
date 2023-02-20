@@ -4,6 +4,7 @@ export type ContentType =
   | 'switches'
   | 'checkboxes'
   | 'loaders'
+  | 'forms'
   | 'others';
 
 export interface HSComponentProps {

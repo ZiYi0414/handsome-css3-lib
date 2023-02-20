@@ -1,10 +1,11 @@
 import classNames from 'classnames';
 import styles from '../index.module.scss';
 import styled, { StyledComponent } from 'styled-components';
-import { HSComponentProps } from 'types/component';
+import { HSComponentProps, ContentType } from 'types/component';
 import Link from 'next/link';
 interface ICardProps {
   post: HSComponentProps;
+  type: ContentType
 }
 
 interface DivProps {
@@ -14,13 +15,14 @@ const DivStyled = styled.div<DivProps>`
   ${props => props.css}
 `;
 
-export default function Card({ post }: ICardProps) {
+export default function Card({ post, type }: ICardProps) {
   return (
     <article>
         <div
           className={classNames(
             styles.card__wrap,
-            post?.theme === 'dark' && styles.card__dark
+            post?.theme === 'dark' && styles.card__dark,
+            type === 'forms' && styles.forms
           )}
         >
           <DivStyled css={post.css}>

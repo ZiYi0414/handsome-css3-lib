@@ -56,7 +56,7 @@ export default function Slug({ post, type }: IProps) {
               <div
                 className={classNames(
                   styles.card__wrap,
-                  post?.theme === 'dark' && styles.card__dark
+                  post?.theme === 'dark' && styles.card__dark,
                 )}
               >
                 <DivStyled css={post.css}>

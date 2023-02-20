@@ -32,7 +32,7 @@ export default function Type({ posts, type }: IProps) {
     });
     return data.map((e, index) => (
       <Link href={`/${e.type}/${e.title}`} key={index}>
-        <Card post={e} />
+        <Card post={e} type={type} />
       </Link>
     ));
   };

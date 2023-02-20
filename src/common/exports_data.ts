@@ -31,7 +31,11 @@ export const components_data: HandsomeComponent[] = [
     type: '多选框 Checkboxes',
     children: []
   },
-
+  // {
+  //   index: 'forms',
+  //   type: '表单 Forms',
+  //   children: []
+  // },
   {
     index: 'others',
     type: '创想 others',
