@@ -5,7 +5,7 @@ import { HSComponentProps, ContentType } from 'types/component';
 import Link from 'next/link';
 interface ICardProps {
   post: HSComponentProps;
-  type: ContentType
+  type?: ContentType
 }
 
 interface DivProps {
