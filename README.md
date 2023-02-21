@@ -27,6 +27,10 @@ Open [http://localhost:8204](http://localhost:8204) with your browser to see the
 ## web 详情
 ![预览](./.github/3.png)
 
+## 编写手册&handsome架构
+[详情请查看](https://github.com/CFsjp/chengfeng-blog/issues/3)
+
+
 ## TODO:
 
 - 主页展示方式更新。  p0    DL: 2023-02-28
