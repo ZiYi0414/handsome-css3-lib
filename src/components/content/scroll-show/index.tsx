@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import { HandsomeComponent } from 'common/exports_data';
 import Card from 'content/card';
-import { useEffect, useRef } from 'react';
 import styles from './index.module.scss';
 
 export default function ScrollShow({
@@ -47,6 +47,10 @@ export default function ScrollShow({
           )}
         </div>
       </div>
+      <div className={styles.fade}></div>
+      <Link className={styles.show__all_link} href="/show-all">
+        Show ALL !
+      </Link>
     </div>
   );
 }

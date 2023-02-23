@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import dynamic from 'next/dynamic';
 import Layout from 'layout/Layout';
 import Seo from 'Seo';
