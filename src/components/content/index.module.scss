@@ -119,38 +119,203 @@
 }
 
 .star__background {
-  width: 100vw;
-  height: 50vh;
+  text-align: center;
+  background: var(--background);
+  height: 400px;
+  width: 100%;
   overflow: hidden;
-  background: var(--starbg);
-  background-attachment: fixed;
-  .stars {
-    transform: perspective(500px);
-    transform-style: preserve-3d;
-    perspective-origin: 50% 100%;
-    animation: rotate 90s infinite linear;
+  .area {
+    height: 100%;
+    width: 100%;
+    .circles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .circles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: var(--bgV2);
+      animation: animate 25s linear infinite;
+      bottom: -150px;
+    }
+
+    .circles li:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+
+    .circles li:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .circles li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+
+    .circles li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 80px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    .circles li:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+
+    .circles li:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+
+    .circles li:nth-child(7) {
+      left: 10%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 7s;
+    }
+
+    .circles li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+
+    .circles li:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+
+    .circles li:nth-child(10) {
+      left: 85%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+      }
+
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+      }
+    }
   }
-  .star {
-    width: 2px;
-    height: 2px;
-    background: #f7f7b6;
-    //border-radius:100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-origin: 0 0 -300px;
-    transform: translate3d(0, 0, -300px);
+  // 首页特效
+
+  .background span {
+    $particleSize: 20vmin;
+    $animationDuration: 6s;
+    $amount: 20;
+    width: $particleSize;
+    height: $particleSize;
+    border-radius: $particleSize;
     backface-visibility: hidden;
-  }
-  @keyframes rotate {
-    0% {
-      transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);
+    position: absolute;
+    animation-name: move;
+    animation-duration: $animationDuration;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    $colors: (#583c87, #e45a84, #ffacac);
+    @for $i from 1 through $amount {
+      &:nth-child(#{$i}) {
+        color: nth($colors, random(length($colors)));
+        top: random(100) * 1%;
+        left: random(100) * 1%;
+        animation-duration: (random($animationDuration * 10) / 10) * 1s + 10s;
+        animation-delay: random(($animationDuration + 10s) * 10) / 10 * -1s;
+        transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
+        $blurRadius: (random() + 0.5) * $particleSize * 0.5;
+        $x: if(random() > 0.5, -1, 1);
+        box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor;
+      }
     }
+  }
+
+  @keyframes move {
     100% {
-      transform: perspective(400px) rotateZ(20deg) rotateX(-40deg)
-        rotateY(-360deg);
+      transform: translate3d(0, 0, 1px) rotate(360deg);
     }
   }
+
+  .title {
+    font-weight: bolder;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 28px;
+    @media (max-width: 420px) {
+      font-size: 2em;
+    }
+  }
+  .media__title {
+    display: none;
+    font-weight: bolder;
+    font: 700 2.2em/1 Montserrat, sans-serif;
+    color: var(--primary);
+    line-height: 1.35;
+    margin-bottom: 28px;
+    @media (max-width: 420px) {
+      display: block;
+    }
+  }
+  .sub__title {
+    margin-top: 20px;
+    h2 {
+      font: 700 2.2em/1 Montserrat, sans-serif;
+      color: var(--primary);
+      line-height: 1.35;
+      @media (max-width: 420px) {
+        font-size: 2em;
+      }
+    }
+    p {
+      font: 700 1em/1 Montserrat, sans-serif;
+      font-style: oblique;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+  }
+}
+.container {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 30px;
 }
 
 #master {
@@ -161,6 +326,9 @@
   line-height: 1;
   font-weight: bold;
   -webkit-font-smoothing: inherit;
+  @media (max-width: 1200px) {
+    display: none;
+  }
 }
 
 #master {

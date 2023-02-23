@@ -1,0 +1,54 @@
+import { HandsomeComponent } from 'common/exports_data';
+import Card from 'content/card';
+import { useEffect, useRef } from 'react';
+import styles from './index.module.scss';
+
+export default function ScrollShow({
+  components_data = []
+}: {
+  components_data: HandsomeComponent[];
+}) {
+  return (
+    <div className={styles.background}>
+      <div className={styles.app}>
+        <div className={styles.tag__list}>
+          {components_data.map(
+            (component, index) =>
+              index < 3 && (
+                <section key={component.index} className={styles.loop__slider}>
+                  <div className={styles.inner}>
+                    {component.children.map(
+                      (e, index) =>
+                        index < 7 && (
+                          <div className={styles.tag}>
+                            <Card
+                              post={e}
+                              key={index}
+                              style={{ height: 200 }}
+                              showName={false}
+                            />
+                          </div>
+                        )
+                    )}
+                    {component.children.map(
+                      (e, index) =>
+                        index < 7 && (
+                          <div className={styles.tag}>
+                            <Card
+                              post={e}
+                              key={'2' + index}
+                              style={{ height: 200 }}
+                              showName={false}
+                            />
+                          </div>
+                        )
+                    )}
+                  </div>
+                </section>
+              )
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}

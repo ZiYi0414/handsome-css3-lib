@@ -1,16 +1,13 @@
-import { useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import Layout from 'layout/Layout';
 import Seo from 'Seo';
 import styles from '../styles/Home.module.scss';
-import { useRafFn } from '@/hooks/useRafFn';
 import HomeLoading from '@/components/loading';
 import useLoaded from 'hooks/useLoaded';
-import { Card, Banner } from 'content/index';
-import Link from 'next/link';
-
+import ScrollShow from '@/components/content/scroll-show';
+import { Banner } from 'content/index';
 import { components_data, HandsomeComponent } from '../common/exports_data';
-import { GetStaticProps, InferGetStaticPropsType } from 'next/types';
+import { GetStaticProps } from 'next/types';
 import { getAllFilesFrontmatter } from 'lib/mdx';
 import classNames from 'classnames';
 
@@ -23,19 +20,12 @@ export default function Home({ components_data }: IProps) {
   return (
     <Layout>
       <Seo templateTitle="AwA" />
-      <Banner />
       <HomeLoading isLoaded={isLoaded} />
       <div className={styles.home__wrap}>
+        <Banner />
+        <ScrollShow components_data={components_data} />
         <div className={styles.container}>
           <div className={styles.home__title}>
-            <h2>
-              Amazingly handsome Open-Source UI components made with HTML and
-              CSS
-            </h2>
-            <p>
-              Thank you to everyone who contributes to the cause and art of open
-              source :)
-            </p>
             <div
               className={classNames(
                 styles.home__subtitle,
@@ -65,27 +55,6 @@ export default function Home({ components_data }: IProps) {
               </div>
             </div>
           </div>
-          {components_data.map((component, index) => (
-            <section key={component.index} className="mb-16">
-              <Link
-                className={styles.posts__prereview__heading}
-                href={component.index}
-              >
-                {component.type}
-              </Link>
-              <div className={styles.posts__prereview__content}>
-                {component.children.map(
-                  (e, index) => index < 4 && <Card post={e} key={index} />
-                )}
-              </div>
-              <Link
-                href={component.index}
-                className={styles.posts__see__all__link}
-              >
-                查看全部
-              </Link>
-            </section>
-          ))}
         </div>
       </div>
     </Layout>

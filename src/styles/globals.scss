@@ -58,7 +58,8 @@ body {
   --purple: #bd93f9;
   --red: #ff5555;
   --yellow: #f1fa8c;
-  --white: #FFF
+  --white: #FFF;
+  --bgV2: #1b294740;
 }
 [data-theme='dark'] {
   --background: black;
@@ -67,6 +68,7 @@ body {
   --lightgray: #2c2c2c;
   --starbg: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   --code_bg: #1c1c1c;
+  --bgV2: #ff79c650;
 }
 
 a {
