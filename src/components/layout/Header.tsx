@@ -1,9 +1,11 @@
 import { useMemo } from 'react';
+import dynamic from 'next/dynamic';
 import styles from './index.module.scss';
 import LinkGroup from '@/components/nav/linkGroup';
-import IconGroup from '@/components/nav/iconGroup';
 import PhoneGroup from '@/components/nav/phoneGroup';
 import classNames from 'classnames';
+
+const IconGroup = dynamic(import('@/components/nav/iconGroup'), { ssr: false });
 export default function Header() {
   return (
     <header className="flex relative">

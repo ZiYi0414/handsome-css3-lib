@@ -20,10 +20,9 @@ export default function ScrollShow({
                     {component.children.map(
                       (e, index) =>
                         index < 7 && (
-                          <div className={styles.tag}>
+                          <div className={styles.tag} key={index}>
                             <Card
                               post={e}
-                              key={index}
                               style={{ height: 200 }}
                               showName={false}
                             />
@@ -33,10 +32,9 @@ export default function ScrollShow({
                     {component.children.map(
                       (e, index) =>
                         index < 7 && (
-                          <div className={styles.tag}>
+                          <div className={styles.tag} key={'2' + index}>
                             <Card
                               post={e}
-                              key={'2' + index}
                               style={{ height: 200 }}
                               showName={false}
                             />

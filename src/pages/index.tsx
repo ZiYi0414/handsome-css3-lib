@@ -1,15 +1,16 @@
 import classnames from 'classnames';
+import dynamic from 'next/dynamic';
 import Layout from 'layout/Layout';
 import Seo from 'Seo';
 import styles from '../styles/Home.module.scss';
 import HomeLoading from '@/components/loading';
 import useLoaded from 'hooks/useLoaded';
 import ScrollShow from '@/components/content/scroll-show';
-import { Banner } from 'content/index';
 import { components_data, HandsomeComponent } from '../common/exports_data';
 import { GetStaticProps } from 'next/types';
 import { getAllFilesFrontmatter } from 'lib/mdx';
 import classNames from 'classnames';
+const Banner = dynamic(import('content/banner'), { ssr: false });
 
 interface IProps {
   components_data: HandsomeComponent[];
