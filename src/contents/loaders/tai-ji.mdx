@@ -1,0 +1,96 @@
+---
+title: tai-ji
+made_by: Luyiin🖤
+---
+
+```css
+.wrap {
+  --wrapSize: 236px;
+  --size: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--wrapSize);
+  height: var(--wrapSize);
+  border-radius: 50%;
+  background: #000;
+  animation: rotate 5s infinite linear;
+}
+.tai-ji-wrap {
+  display: flex;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  overflow: hidden;
+}
+.yin,
+.yang {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+.yin {
+  background: #000;
+}
+.yin::after {
+  content: '';
+  position: absolute;
+  transform: translate(-50%, 100%);
+  width: calc(var(--size) / 2);
+  height: calc(var(--size) / 2);
+  border-radius: 50%;
+  background: #000;
+  z-index: 2;
+}
+.yin::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: calc(var(--size) / 5.7);
+  height: calc(var(--size) / 5.7);
+  transform: translate(-50%, -85%);
+  border-radius: 50%;
+  background: #fff;
+  z-index: 3;
+}
+.yang::after {
+  content: '';
+  position: absolute;
+  transform: translate(50%, 0);
+  width: calc(var(--size) / 2);
+  height: calc(var(--size) / 2);
+  border-radius: 50%;
+  background: #fff;
+  z-index: 2;
+}
+.yang::before {
+  content: '';
+  position: absolute;
+  width: calc(var(--size) / 5.7);
+  height: calc(var(--size) / 5.7);
+  transform: translate(250%, 85%);
+  border-radius: 50%;
+  background: #000;
+  z-index: 3;
+}
+.yang {
+  background: #fff;
+}
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+```
+
+```html
+<div class="wrap">
+  <div class="tai-ji-wrap">
+    <div class="yang"></div>
+    <div class="yin"></div>
+  </div>
+</div>
+```
