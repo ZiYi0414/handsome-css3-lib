@@ -1,0 +1,87 @@
+---
+title: brown-gecko-29
+made_by: Shoh2008
+theme: dark
+---
+
+```css
+.box {
+  height: 50px;
+  width: 150px;
+}
+
+button {
+  outline: none;
+  position: relative;
+  border: 2px solid #ffffff;
+  background: radial-gradient(#f200ff, #de7ef4);
+  height: 50px;
+  width: 150px;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 20px #fb86ff;
+  transition: 3s;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateX(20deg) rotateY(20deg);
+}
+
+.box:hover button {
+  transform: rotate(0);
+}
+
+.ex {
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  box-shadow: 0 0 20px #fb86ff;
+  transition: 1s;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
+  background: radial-gradient(#f310ff, #c37cd3);
+}
+
+.ex:nth-child(1) {
+  transform: perspective(30em) translateZ(20px);
+}
+
+.ex:nth-child(2) {
+  transform: perspective(30em) translateZ(15px);
+}
+
+.ex:nth-child(2) {
+  transform: perspective(30em) translateZ(10px);
+}
+
+.box:hover .ex:nth-child(1) {
+  background: transparent;
+  backdrop-filter: blur(10px);
+  transform: perspective(30em) translateZ(20px) translateY(30px) rotateX(30deg);
+}
+
+.box:hover .ex:nth-child(2) {
+  background: transparent;
+  backdrop-filter: blur(10px);
+  transform: perspective(30em) translateZ(15px) translateY(-30px) rotateX(
+      -30deg
+    );
+}
+
+.text {
+  transform: translateZ(40px);
+}
+```
+
+```html
+<div class="box">
+  <button>
+    <div class="ex"></div>
+    <div class="ex"></div>
+    <div class="ex"></div>
+    <div class="text">Button</div>
+  </button>
+</div>
+```
