@@ -28,11 +28,11 @@ export default function Card(props: ICardProps) {
         )}
         style={{ ...style }}
       >
-        <DivStyled css={post.css}>
+        <DivStyled css={post.css} style={{ zIndex: 9999 }}>
           <div
             id={post.title}
             className={classNames(
-              post.title,
+              styles.card__content,
               'flex items-center w-full h-full justify-center'
             )}
             dangerouslySetInnerHTML={{ __html: post.html }}

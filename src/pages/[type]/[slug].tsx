@@ -59,7 +59,7 @@ export default function Slug({ post, type }: IProps) {
                   post?.theme === 'dark' && styles.card__dark
                 )}
               >
-                <DivStyled css={post.css}>
+                <DivStyled css={post.css} style={{ zIndex: 9999 }}>
                   <div
                     id={post.title}
                     className={classNames(
