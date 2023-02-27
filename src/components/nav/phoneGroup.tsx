@@ -5,18 +5,18 @@ import SideMenu from './sideMenu';
 import { useState } from 'react';
 
 export default function PhoneGroup() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [showSideMenu, setShowSideMenu] = useState(false);
   return (
     <div className={styles.phoneGroup__wrap}>
       <button
         className="mr-4"
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       >
         <span
           className={classNames(
             'iconfont !text-[25px]',
-            theme === 'dark' ? 'icon-moon' : 'icon-sun'
+            resolvedTheme === 'dark' ? 'icon-moon' : 'icon-sun'
           )}
         />
       </button>

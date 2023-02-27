@@ -1,12 +1,12 @@
 import { useTheme } from 'next-themes';
 import styles from '../index.module.scss';
 export default function Banner() {
-  const { theme, setTheme } = useTheme();
-
+  const { resolvedTheme } = useTheme();
+  
   return (
     <div className={styles.star__background}>
       <div className={styles.container}>
-        {theme === 'light' ? (
+        {resolvedTheme === 'light' ? (
           <div className={styles.area}>
             <ul className={styles.circles}>
               <li></li>

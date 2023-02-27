@@ -1,11 +1,10 @@
 import { useTheme } from 'next-themes';
-import Link from 'next/link';
 import classNames from 'classnames';
 import styles from './index.module.scss';
 import UnstyledLink from 'content/link/UnstyledLink';
 
 export default function IconGroup() {
-  const { theme, setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
 
   return (
     <div className={styles.iconGroup__wrap}>
@@ -24,13 +23,13 @@ export default function IconGroup() {
 
       <button
         className="ml-4"
-        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       >
-        <small>{theme === 'dark' ? '辉' : '耀'}</small>
+        <small>{resolvedTheme === 'dark' ? '辉' : '耀'}</small>
         <span
           className={classNames(
             'iconfont ml-2 !text-[22px]',
-            theme === 'dark' ? 'icon-moon' : 'icon-sun'
+            resolvedTheme === 'dark' ? 'icon-moon' : 'icon-sun'
           )}
         />
       </button>
