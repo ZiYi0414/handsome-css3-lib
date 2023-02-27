@@ -30,11 +30,7 @@ export default function Type({ posts, type }: IProps) {
         return e;
       }
     });
-    return data.map((e, index) => (
-      <Link href={`/${e.type}/${e.title}`} key={index}>
-        <Card post={e} />
-      </Link>
-    ));
+    return data.map((e, index) => <Card post={e} key={index} />);
   };
 
   useEffect(() => {

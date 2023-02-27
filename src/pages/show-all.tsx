@@ -30,11 +30,7 @@ export default function Type({ posts, type = 'ALL' }: IProps) {
         return e;
       }
     });
-    return data.map((e, index) => (
-      <Link href={`/${e.type}/${e.title}`} key={index}>
-        <Card post={e} />
-      </Link>
-    ));
+    return data.map((e, index) => <Card post={e} key={index} />);
   };
 
   useEffect(() => {
@@ -61,14 +57,15 @@ export default function Type({ posts, type = 'ALL' }: IProps) {
             </div>
           </section>
           {loadMore < components.length && (
-          <div className="text-center">
-            <button
-              className={classNames(styles.loadmore__btn)}
-              onClick={() => setLoadMore(loadMore * 2)}
-            >
-              Gimme More!
-            </button>
-          </div>)}
+            <div className="text-center">
+              <button
+                className={classNames(styles.loadmore__btn)}
+                onClick={() => setLoadMore(loadMore * 2)}
+              >
+                Gimme More!
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </Layout>

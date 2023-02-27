@@ -103,6 +103,7 @@
   border: 2px dashed var(--primary);
   border-radius: 8px;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
   @media (min-width: 1025px) {
     &:nth-of-type(3n) {
       margin-right: 0;

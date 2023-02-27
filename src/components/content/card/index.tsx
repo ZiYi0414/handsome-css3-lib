@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import styles from '../index.module.scss';
-import styled, { StyledComponent } from 'styled-components';
+import styled from 'styled-components';
 import { HSComponentProps } from 'types/component';
-import Link from 'next/link';
-import { CSSProperties } from 'react';
+import { CSSProperties, MouseEvent } from 'react';
+import { useRouter } from 'next/router';
+
 interface ICardProps {
   post: HSComponentProps;
   style?: CSSProperties;
@@ -19,6 +20,17 @@ const DivStyled = styled.div<DivProps>`
 
 export default function Card(props: ICardProps) {
   const { post, style = {}, showName = true } = props;
+  const componentsPreviewClickList = [
+    'buttons',
+    'inputs',
+    'checkboxes',
+    'switches'
+  ];
+  const router = useRouter();
+
+  const routerGo = (href: string) => {
+    router.push(href);
+  };
   return (
     <article>
       <div
@@ -27,8 +39,16 @@ export default function Card(props: ICardProps) {
           post?.theme === 'dark' && styles.card__dark
         )}
         style={{ ...style }}
+        onClick={() => routerGo(`/${post.type}/${post.title}`)}
       >
-        <DivStyled css={post.css} style={{ zIndex: 9999 }}>
+        <DivStyled
+          css={post.css}
+          style={{ zIndex: 9999 }}
+          onClick={e =>
+            componentsPreviewClickList.includes(post.type) &&
+            e.stopPropagation()
+          }
+        >
           <div
             id={post.title}
             className={classNames(
