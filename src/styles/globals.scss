@@ -16,7 +16,22 @@ body {
   -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   transition: all 0.1s;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100vh;
+  
+  &:hover {
+    overflow: overlay;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #b8b7b7;
 }
 
 :root {
@@ -58,7 +73,7 @@ body {
   --purple: #bd93f9;
   --red: #ff5555;
   --yellow: #f1fa8c;
-  --white: #FFF;
+  --white: #fff;
   --bgV2: #1b294740;
 }
 [data-theme='dark'] {
