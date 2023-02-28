@@ -3,11 +3,11 @@
   align-items: center;
   line-height: 80px;
   text-align: right;
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: bold;
   z-index: 99;
   font-family: Poppins, sans-serif;
-  text-shadow: 2px 0 #f9f8f8, -1px 0 var(--primary), -2px 0 green;
+  cursor: pointer;
   @media (max-width: 1200px) {
     font-size: 1.75rem;
     margin-left: 20px;

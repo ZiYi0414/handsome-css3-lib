@@ -41,7 +41,7 @@ export default function NextImage({
         className={classNames(
           imgClassName,
           // text-gray to hide alt text
-          'bg-gray-400 text-gray-400 ',
+          'text-gray-400 ',
           status === 'loading' && classNames('animate-pulse', blurClassName)
         )}
         src={src}
