@@ -41,10 +41,12 @@ Open [http://localhost:8204](http://localhost:8204) with your browser to see the
 
 ## TODO:
 
-- 主页展示方式更新。  p0    DL: 2023-02-28
+- ~~主页展示方式更新。  p0    DL: 2023-02-28~~
 - 需要解决数据逐渐变大的问题。 p1   DL: 2023-03-20
 - 单页dom过多解决渲染性能问题。 p1  DL: 2023-03-20
 - 账号系统。 p2
+- 创作模块。 p3
+- CSS Challenge 主题挑战 p3
 - 自定义组件模块, 拖拽数值, 自定义颜色, 自定义特效和组合。 p3
 
 
