@@ -1,0 +1,31 @@
+.card__wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 250px;
+  border-radius: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--light);
+  border-radius: 8px;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.25s;
+  }
+  @media (min-width: 1025px) {
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+  }
+}
+.card__name {
+  padding: 4px;
+  font-family: Poppins, sans-serif;
+}
+
+.card__dark {
+  background-color: var(--semidark);
+}

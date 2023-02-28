@@ -39,7 +39,7 @@ export default function Slug({ post, type }: IProps) {
         className={classNames(isLoaded && 'fade-in-start', styles.slug__wrap)}
       >
         <SideMenu activeKey={type} data-fade="1" />
-        <div className="w-full" data-fade="1">
+        <div className="w-full pt-12" data-fade="1">
           <div className="pl-5">
             <button
               className={classNames(styles.loadmore__btn)}
@@ -49,16 +49,15 @@ export default function Slug({ post, type }: IProps) {
             </button>
           </div>
           <div className={styles.container}>
-            <article>
+            <article
+              className={classNames(
+                post?.theme === 'dark' && styles.card__dark
+              )}
+            >
               <div className={styles.content__title}>
                 {post.made_by} @ {post.title}
               </div>
-              <div
-                className={classNames(
-                  styles.card__wrap,
-                  post?.theme === 'dark' && styles.card__dark
-                )}
-              >
+              <div className={classNames(styles.card__wrap)}>
                 <DivStyled css={post.css} style={{ zIndex: 9999 }}>
                   <div
                     id={post.title}

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import styles from '../index.module.scss';
+import styles from './card.module.scss';
 import styled from 'styled-components';
 import { HSComponentProps } from 'types/component';
 import { CSSProperties, MouseEvent } from 'react';

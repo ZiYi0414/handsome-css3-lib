@@ -37,7 +37,8 @@
   border: 2px dashed var(--primary);
   border-radius: 8px;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
-
+  background-color: var(--light);
+  color: var(--dark);
   @media (min-width: 1025px) {
     &:nth-of-type(3n) {
       margin-right: 0;
@@ -46,11 +47,18 @@
 }
 .card__name {
   padding: 4px;
+  color: var(--dark);
   font-family: Poppins, sans-serif;
 }
 
 .card__dark {
-  background-color: var(--semidark);
+  .card__wrap {
+    color: var(--lgiht);
+    background-color: var(--semidark);
+  }
+  .content__title {
+    color: var(--light);
+  }
 }
 
 .loadmore__btn {
@@ -83,6 +91,6 @@
 .content__title {
   position: absolute;
   margin: 10px;
-  color: var(--background);
+  color: var(--dark);
   z-index: 9999;
 }
