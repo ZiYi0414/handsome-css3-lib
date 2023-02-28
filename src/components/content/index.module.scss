@@ -278,7 +278,9 @@
     font-weight: bolder;
     color: var(--primary);
     line-height: 1.35;
+    margin-top: 30px;
     margin-bottom: 28px;
+    font-size: 3.5em;
     @media (max-width: 420px) {
       font-size: 2em;
     }
@@ -295,7 +297,8 @@
     }
   }
   .sub__title {
-    margin-top: 20px;
+    margin: 20px auto;
+    max-width: 1000px;
     h2 {
       font: 700 2.2em/1 Poppins, sans-serif;
       color: var(--primary);
@@ -314,7 +317,7 @@
 }
 .container {
   position: relative;
-  max-width: 1200px;
+  min-height: 400px;
   margin: auto;
   padding: 20px 30px;
 }
