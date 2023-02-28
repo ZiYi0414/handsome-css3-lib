@@ -1,10 +1,12 @@
 .header__title {
+  display: flex;
+  align-items: center;
   line-height: 80px;
   text-align: right;
   font-size: 2rem;
   font-weight: bold;
   z-index: 99;
-  font-family: Montserrat, sans-serif;
+  font-family: Poppins, sans-serif;
   text-shadow: 2px 0 #f9f8f8, -1px 0 var(--primary), -2px 0 green;
   @media (max-width: 1200px) {
     font-size: 1.75rem;
@@ -46,7 +48,7 @@
     text-align: center;
     border-radius: 36px;
     // border: 1px dashed #cbcbcb;
-    font-family: Montserrat, sans-serif;
+    font-family: Poppins, sans-serif;
     font-weight: bold;
     color: var(--primary);
     margin-bottom: 5px;

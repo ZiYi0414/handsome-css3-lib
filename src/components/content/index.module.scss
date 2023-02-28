@@ -10,14 +10,14 @@
   }
   p {
     color: #f1f2f6;
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Poppins', cursive;
     text-transform: uppercase;
     letter-spacing: 0.25em;
     display: inline-block;
     padding: 1.5em 0em;
     width: 1200px;
     span {
-      font: bold 5em/1 'Monoton', cursive;
+      font: bold 5em/1 'Poppins', cursive;
       letter-spacing: 0.1em;
       padding: 0.25em 0 0.325em;
       display: block;
@@ -112,7 +112,7 @@
 }
 .card__name {
   padding: 4px;
-  font-family: Montserrat, sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 .card__dark {
@@ -286,7 +286,7 @@
   .media__title {
     display: none;
     font-weight: bolder;
-    font: 700 2.2em/1 Montserrat, sans-serif;
+    font: 700 2.2em/1 Poppins, sans-serif;
     color: var(--primary);
     line-height: 1.35;
     margin-bottom: 28px;
@@ -297,7 +297,7 @@
   .sub__title {
     margin-top: 20px;
     h2 {
-      font: 700 2.2em/1 Montserrat, sans-serif;
+      font: 700 2.2em/1 Poppins, sans-serif;
       color: var(--primary);
       line-height: 1.35;
       @media (max-width: 420px) {
@@ -305,7 +305,7 @@
       }
     }
     p {
-      font: 700 1em/1 Montserrat, sans-serif;
+      font: 700 1em/1 Poppins, sans-serif;
       font-style: oblique;
       margin-top: 25px;
       margin-bottom: 25px;
