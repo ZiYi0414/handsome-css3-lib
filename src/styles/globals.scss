@@ -39,7 +39,7 @@ body {
   --secondary-grey-light: #dcdcdc;
   --maindark: #171717;
   --dark: #191825;
-  --light: #EFF5F5;
+  --light: #eff5f5;
   --semidark: #181818;
   --starbg: radial-gradient(
     220% 105% at top center,
@@ -59,7 +59,7 @@ body {
   --purple: #bd93f9;
   --red: #ff5555;
   --yellow: #f1fa8c;
-  --white: #FFF;
+  --white: #fff;
   --bgV2: #1b294740;
 }
 [data-theme='dark'] {
@@ -157,4 +157,61 @@ a {
 .typing-demo {
   font-family: Poppins;
   font-size: 2.5rem;
+}
+
+.pagination {
+  margin-top: 20px;
+  grid-column: 1/-1;
+  display: grid;
+  grid-gap: 14px;
+  grid-template-columns: 1fr 1fr;
+
+  .show {
+    visibility: unset;
+  }
+
+  .hidden {
+    visibility: hidden;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    color: var(--grey);
+    border-radius: 8px;
+    font-size: 20px;
+    grid-column: 1;
+  }
+
+  .btn-light {
+    background-color: var(--light);
+  }
+
+  .btn-dark {
+    background-color: #181818;;
+  }
+
+  .button--right {
+    justify-content: flex-end;
+    text-align: right;
+    grid-column: 2;
+  }
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  user-select: none;
+  padding: 0 20px;
+  height: 42px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border: none;
+  border-radius: var(--button-border-radius);
+  transition: all 0.3s;
 }
