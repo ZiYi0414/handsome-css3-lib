@@ -6,7 +6,8 @@ made_by: denic
 ```css
 .typing-demo {
   width: 22ch;
-  animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+  animation: typing 8s steps(22) infinite, blink 0.5s step-end infinite
+      alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
@@ -15,7 +16,13 @@ made_by: denic
 }
 
 @keyframes typing {
-  from {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 22ch;
+  }
+  100% {
     width: 0;
   }
 }

@@ -1,0 +1,54 @@
+---
+title: friend-blog-link
+made_by: Luyiin
+---
+
+```css
+.friend__box {
+  display: inline-flex;
+  width: auto;
+  max-height: 3rem;
+  min-width: 150px;
+  padding-right: 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 1px 1px 3px #909090;
+  cursor: pointer;
+  transition: all 0.3s;
+  transform: rotateY(0);
+  overflow: hidden;
+}
+.friend__box img {
+  position: relative;
+  width: 3rem;
+  max-height: 3rem;
+  margin-right: 20px;
+  background: #3d3d3d;
+  background-size: 100%;
+}
+.name {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 3rem;
+  color: #909090;
+}
+.friend__box:hover {
+  border: 1px solid #b5b5b5;
+  box-shadow: -12px 10px 5px #737373;
+  transform: rotateZ(5deg);
+  transform-origin: 90% 40%;
+}
+```
+
+```html
+<div class="friend__box">
+  <img
+    src="https://avatars.githubusercontent.com/u/76715937?s=400&u=6287e56a946c957e233dbcc8b460c60e983674a1&v=4"
+  />
+  <p class="name">Luyiin</p>
+</div>
+```
