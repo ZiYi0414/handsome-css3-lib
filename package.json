@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.5.1",
     "@vercel/analytics": "^0.1.8",
     "autoprefixer": "^10.4.12",
     "babel-plugin-styled-components": "^2.0.7",

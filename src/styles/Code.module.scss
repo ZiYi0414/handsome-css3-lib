@@ -1,0 +1,30 @@
+// IDE render
+.rendering__container{
+    border-radius: 8px;
+    background-color: #1e1e1e;
+    margin-bottom: 20px;
+}
+
+.container{
+    justify-content: space-between;
+    &>div{
+        flex: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .container{
+        display: block;
+    }
+
+  }
+  
+
+.left_side{
+    margin-right: 20px;
+}
+
+.editor{
+    border-radius: 8px;
+    overflow: hidden;
+}
