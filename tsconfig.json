@@ -18,9 +18,14 @@
     "paths": {
       "~/*": ["./public/*"],
       "*": ["src/components/*", "src/pages/*", "src/*"],
-      "@/*": ["src/*"],
-    },
+      "@/*": ["src/*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/editor/MonacoEditor.jsx"
+  ],
   "exclude": ["node_modules"]
 }
