@@ -14,12 +14,16 @@ export default function linkGroup() {
           </Link>
         </li>
         <li className="mx-4 cursor-pointer">
-          <Link
-            href={'/about'}
-            className={styles.nav__link}
-            data-name="👋 你好"
-          >
-            👋 你好
+          <Link href={'/code'} className={styles.nav__link} data-name="创作">
+            创作
+            <small className=" py-0.5 px-1.5 text-white bg-[#635985]">
+              BETA
+            </small>
+          </Link>
+        </li>
+        <li className="mx-4 cursor-pointer">
+          <Link href={'/about'} className={styles.nav__link} data-name="关于">
+            关于
           </Link>
         </li>
       </ul>
