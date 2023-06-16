@@ -1,4 +1,5 @@
-import MonacoEditorComponent from '@monaco-editor/react';
+import MonacoEditorComponent, { Monaco } from '@monaco-editor/react';
+import { editor } from 'monaco-editor';
 import { FC } from 'react';
 import styles from './monacoEditor.module.scss';
 import classNames from 'classnames';
@@ -25,9 +26,14 @@ const MonacoEditor: FC<Props> = props => {
         width="100%"
         height={props.height || '600px'}
         theme="vs-dark"
+        className=" text-base"
         defaultLanguage={props.language}
         value={props.code}
         onChange={props.onCodeChange}
+        options={{
+          fontSize: 16,
+          rulers: []
+        }}
       />
     </>
   );

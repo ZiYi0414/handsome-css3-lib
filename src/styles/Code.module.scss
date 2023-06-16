@@ -1,30 +1,27 @@
 // IDE render
-.rendering__container{
-    border-radius: 8px;
-    background-color: #1e1e1e;
-    margin-bottom: 20px;
+.rendering__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
-.container{
-    justify-content: space-between;
-    &>div{
-        flex: 1;
-    }
+.left_side {
+  margin-right: 20px;
 }
 
-@media (max-width: 1200px) {
-    .container{
-        display: block;
-    }
-
-  }
-  
-
-.left_side{
-    margin-right: 20px;
+.editor__html {
+  grid-row-start: span 1;
+  grid-row-end: auto;
+  border-radius: 8px;
+  overflow: hidden;
 }
-
-.editor{
-    border-radius: 8px;
-    overflow: hidden;
+.editor__css {
+  grid-row-start: span 2;
+  grid-row-end: auto;
+  border-radius: 8px;
+  overflow: hidden;
 }
