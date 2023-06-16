@@ -1,0 +1,21 @@
+.awa__modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 400px;
+  z-index: 9999;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 15px;
+  color: #000;
+  outline: none;
+  @media (max-width: 420px) {
+    min-width: 90%;
+  }
+}
+.awa__modal__open {
+  overflow: hidden !important;
+  overscroll-behavior: contain !important;
+  overflow: auto !important;
+}

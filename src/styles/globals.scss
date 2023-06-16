@@ -39,7 +39,7 @@ body {
   --secondary-grey-light: #dcdcdc;
   --maindark: #171717;
   --dark: #191825;
-  --light: #EFF5F5;
+  --light: #eff5f5;
   --semidark: #181818;
   --starbg: radial-gradient(
     220% 105% at top center,
@@ -59,7 +59,7 @@ body {
   --purple: #bd93f9;
   --red: #ff5555;
   --yellow: #f1fa8c;
-  --white: #FFF;
+  --white: #fff;
   --bgV2: #1b294740;
 }
 [data-theme='dark'] {
@@ -157,4 +157,19 @@ a {
 .typing-demo {
   font-family: Poppins;
   font-size: 2.5rem;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  transition: opacity 0.2s;
 }
