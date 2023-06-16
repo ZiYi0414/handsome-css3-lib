@@ -1,5 +1,4 @@
-import MonacoEditorComponent, { Monaco } from '@monaco-editor/react';
-import { editor } from 'monaco-editor';
+import MonacoEditorComponent from '@monaco-editor/react';
 import { FC } from 'react';
 import styles from './monacoEditor.module.scss';
 import classNames from 'classnames';
