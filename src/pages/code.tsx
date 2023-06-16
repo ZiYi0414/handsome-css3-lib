@@ -32,14 +32,17 @@ const Code = () => {
           color: '#fff'
         }}
       >
-        <DivStyled css={cssCode} style={{ zIndex: 9999 }}>
-          <div
-            className={classNames(
-              'flex items-center w-full h-full justify-center'
-            )}
+        <div
+          className={classNames(
+            'flex items-center w-full h-full justify-center'
+          )}
+        >
+          <DivStyled
+            css={cssCode}
+            style={{ zIndex: 9999 }}
             dangerouslySetInnerHTML={{ __html: htmlCode }}
-          ></div>
-        </DivStyled>
+          ></DivStyled>
+        </div>
       </div>
     );
   };
