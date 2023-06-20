@@ -21,7 +21,8 @@ const Code = () => {
   const [htmlCode, setHtmlCode] = useState<string>('');
   const [cssCode, setCssCode] = useState<string>('');
 
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCustomModalOpen, setIsCustomModalOpen] = useState(true);
 
   // 渲染区域
   const RenderingContainer = () => {
@@ -69,6 +70,26 @@ const Code = () => {
         <p className="mt-4">STEP 1 - 组件初始化选择</p>
         <p className="mt-4">STEP 2 - 本地保存</p>
         <p className="mt-4">STEP 3 - 账户储存</p>
+      </AModal>
+      <AModal
+        isOpen={isCustomModalOpen}
+        onClose={() => setIsCustomModalOpen(false)}
+        shouldCloseOnEsc
+      >
+        <p className="mb-8 text-4xl font-semibold text-center">
+          给你准备了一些代码块！
+        </p>
+        <div className={styles.code__option}>
+          <div className={styles.test}>1</div>
+          <div className={styles.test}>1</div>
+          <div className={styles.test}>1</div>
+          <div className={styles.test}>1</div>
+          <div className={styles.test}>1</div>
+          <div className={styles.test}>1</div>
+          <div className={styles.test}>1</div>
+          <div className={styles.test}>1</div>
+          <div className={styles.test}>1</div>
+        </div>
       </AModal>
       <div
         className={classNames(

@@ -25,3 +25,21 @@
   border-radius: 8px;
   overflow: hidden;
 }
+
+.code__option{
+  width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  & >div{
+    width: calc((100% - 20px) / 3);
+    margin-bottom: 10px;
+  }
+}
+
+.test{
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px dotted red;
+}
