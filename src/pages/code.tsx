@@ -64,7 +64,7 @@ const Code = () => {
           版本.
         </p>
         <p className="mt-4">目前还在开发中.</p>
-        <p className="mt-4">欢迎到提交 Bug 和建议到 issues.</p>
+        <p className="mt-4">欢迎提交 Bug 和建议到 issues.</p>
         <p className="mt-16">TODO：</p>
         <p className="mt-4">STEP 1 - 组件初始化选择</p>
         <p className="mt-4">STEP 2 - 本地保存</p>
