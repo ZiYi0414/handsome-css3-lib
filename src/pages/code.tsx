@@ -52,7 +52,10 @@ const Code = () => {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.ctrlKey && event.key === 's') {
+      if (
+        (event.ctrlKey && event.key === 's') ||
+        (event.metaKey && event.key === 's')
+      ) {
         event.preventDefault();
         localStorage.setItem('creator', JSON.stringify({ htmlCode, cssCode }));
         Notice({
