@@ -12,6 +12,7 @@ import { useNotice } from 'notice/Notice.hooks';
 interface DivProps {
   css: string;
 }
+
 const DivStyled = styled.div<DivProps>`
   ${props => props.css}
 `;
@@ -41,6 +42,36 @@ const Code = () => {
       showClose: true
     });
   }, []);
+
+  useEffect(() => {
+    const storageCode = localStorage.getItem('creator');
+    if (!storageCode) return;
+    setHtmlCode(JSON.parse(storageCode)?.htmlCode || '');
+    setCssCode(JSON.parse(storageCode)?.cssCode || '');
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (
+        (event.ctrlKey && event.key === 's') ||
+        (event.metaKey && event.key === 's')
+      ) {
+        event.preventDefault();
+        localStorage.setItem('creator', JSON.stringify({ htmlCode, cssCode }));
+        Notice({
+          content: <p className="mt-4">🫡 保存成功</p>,
+          duration: 1500,
+          position: 'rightBottom'
+        });
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [htmlCode, cssCode]);
 
   // 渲染区域
   const RenderingContainer = () => {
