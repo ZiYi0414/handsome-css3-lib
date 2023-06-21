@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "36108926",
+      "name": "awa-logo",
+      "font_class": "awa-logo",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
       "icon_id": "6988232",
       "name": "style",
       "font_class": "style",
