@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from 'layout/Layout';
 import classNames from 'classnames';
 import useLoaded from 'hooks/useLoaded';
@@ -12,6 +12,7 @@ import { AModal } from 'modal';
 interface DivProps {
   css: string;
 }
+
 const DivStyled = styled.div<DivProps>`
   ${props => props.css}
 `;
@@ -22,7 +23,29 @@ const Code = () => {
   const [cssCode, setCssCode] = useState<string>('');
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isCustomModalOpen, setIsCustomModalOpen] = useState(true);
+  const [isCustomModalOpen, setIsCustomModalOpen] = useState(false);
+
+  useEffect(() => {
+    const storageCode = localStorage.getItem('creator');
+    if (!storageCode) return;
+    setHtmlCode(JSON.parse(storageCode)?.htmlCode || '');
+    setCssCode(JSON.parse(storageCode)?.cssCode || '');
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key === 's') {
+        event.preventDefault();
+        localStorage.setItem('creator', JSON.stringify({ htmlCode, cssCode }));
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [htmlCode, cssCode]);
 
   // 渲染区域
   const RenderingContainer = () => {
