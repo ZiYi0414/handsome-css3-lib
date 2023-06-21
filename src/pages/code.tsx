@@ -56,8 +56,9 @@ const Code = () => {
         event.preventDefault();
         localStorage.setItem('creator', JSON.stringify({ htmlCode, cssCode }));
         Notice({
-          content: <p className="mt-4">保存成功</p>,
-          duration: 1500
+          content: <p className="mt-4">🫡 保存成功</p>,
+          duration: 1500,
+          position: 'rightBottom'
         });
       }
     };
