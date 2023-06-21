@@ -38,8 +38,7 @@ const Code = () => {
           <p className="mt-4">欢迎提交 Bug 和建议到 issues.</p>
         </>
       ),
-      showClose: true,
-      position: 'rightBottom'
+      showClose: true
     });
   }, []);
 
