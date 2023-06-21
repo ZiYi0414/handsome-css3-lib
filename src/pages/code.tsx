@@ -55,6 +55,10 @@ const Code = () => {
       if (event.ctrlKey && event.key === 's') {
         event.preventDefault();
         localStorage.setItem('creator', JSON.stringify({ htmlCode, cssCode }));
+        Notice({
+          content: <p className="mt-4">保存成功</p>,
+          duration: 1500
+        });
       }
     };
 
