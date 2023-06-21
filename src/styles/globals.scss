@@ -61,6 +61,8 @@ body {
   --yellow: #f1fa8c;
   --white: #fff;
   --bgV2: #1b294740;
+
+  --animate-duration: 800ms;
 }
 [data-theme='dark'] {
   --background: black;
@@ -172,4 +174,94 @@ a {
 .ReactModal__Overlay--before-close {
   opacity: 0;
   transition: opacity 0.2s;
+}
+
+.awa-notice {
+  position: fixed;
+  margin: 24px 40px;
+  z-index: 999999;
+  .awa-notice-wrap {
+    margin-bottom: 12px;
+    border-radius: 4px;
+    background: var(--background);
+    color: var(--foreground);
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  .awa-notice-wrap-removing {
+    transform: translateY(-100%); /* 向上移动 */
+  }
+}
+.awa-notice-leftTop {
+  top: 0;
+  left: 0;
+}
+.awa-notice-leftBottom {
+  bottom: 0;
+  left: 0;
+}
+.awa-notice-rightTop {
+  top: 0;
+  right: 0;
+}
+.awa-notice-rightBottom {
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes flipInX {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  to {
+    transform: perspective(400px);
+  }
+}
+
+.flipInX {
+  backface-visibility: visible !important;
+  animation-name: flipInX;
+  animation-duration: var(--animate-duration);
+  animation-fill-mode: both;
+}
+
+@keyframes flipOutX {
+  from {
+    transform: perspective(400px);
+  }
+
+  30% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1;
+  }
+
+  to {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
+  }
+}
+
+.flipOutX {
+  animation-duration: calc(var(--animate-duration) * 0.75);
+  animation-fill-mode: both;
+  animation-name: flipOutX;
+  backface-visibility: visible !important;
 }
