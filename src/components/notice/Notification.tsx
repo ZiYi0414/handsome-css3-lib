@@ -20,7 +20,7 @@ const Notification: React.FC<INoticeOptions> = props => {
   return (
     <div className="px-4 pb-4">
       <div className="flex justify-between items-center pt-2">
-        <div>{title}</div>
+        <div className="font-semibold">{title}</div>
         {showClose && (
           <FiX size={20} onClick={onClose} className="cursor-pointer" />
         )}

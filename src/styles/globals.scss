@@ -181,6 +181,7 @@ a {
   margin: 24px 40px;
   z-index: 999999;
   .awa-notice-wrap {
+    min-width: 300px;
     margin-bottom: 12px;
     border-radius: 4px;
     background: var(--background);
