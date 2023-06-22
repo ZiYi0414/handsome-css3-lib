@@ -8,6 +8,7 @@ import Seo from 'Seo';
 import MonacoEditor from '../components/editor/MonacoEditor';
 import styled from 'styled-components';
 import { useNotice } from 'notice/Notice.hooks';
+import CodeOptionModal from '../components/editor/CodeOptionModal';
 
 interface DivProps {
   css: string;
@@ -100,6 +101,7 @@ const Code = () => {
   return (
     <Layout>
       <Seo templateTitle="AWA - CREATOR" />
+      <CodeOptionModal />
       <div
         className={classNames(
           isLoaded && 'fade-in-start',
