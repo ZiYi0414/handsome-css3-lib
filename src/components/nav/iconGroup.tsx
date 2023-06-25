@@ -12,7 +12,7 @@ export default function IconGroup() {
         <button className="flex flex-col">
           <div className="flex justify-center items-center">
             <small className="text-[#d23669]">like</small>
-            <span className="iconfont icon-github ml-2 !text-[22px]" />
+            <span className="iconfont icon-heart ml-2 !text-[22px]" />
           </div>
           <div className="flex justify-center items-center">
             <span className="iconfont icon-github1 !text-[34px]" />
@@ -31,6 +31,13 @@ export default function IconGroup() {
             'iconfont ml-2 !text-[22px]',
             resolvedTheme === 'dark' ? 'icon-moon' : 'icon-sun'
           )}
+        />
+      </button>
+
+      <button className="ml-4 px-4">
+        <small>Sign in</small>
+        <span
+          className={classNames('iconfont ml-2 !text-[22px] icon-github')}
         />
       </button>
     </div>
