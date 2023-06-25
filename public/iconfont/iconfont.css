@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3756578 */
-  src: url('iconfont.woff2?t=1687339299683') format('woff2'),
-       url('iconfont.woff?t=1687339299683') format('woff'),
-       url('iconfont.ttf?t=1687339299683') format('truetype');
+  src: url('iconfont.woff2?t=1687684125225') format('woff2'),
+       url('iconfont.woff?t=1687684125225') format('woff'),
+       url('iconfont.ttf?t=1687684125225') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-heart:before {
+  content: "\e7df";
+}
+
+.icon-star:before {
+  content: "\e7e0";
+}
+
+.icon-heart1:before {
+  content: "\e60a";
 }
 
 .icon-awa-logo:before {
