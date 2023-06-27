@@ -24,6 +24,9 @@ const Code = () => {
   const [cssCode, setCssCode] = useState<string>('');
   const [Notice] = useNotice();
 
+  const [isCodeOptionModalOpen, setIsCodeOptionModalOpen] =
+    useState<boolean>(true);
+
   useEffect(() => {
     Notice({
       title: <p className="text-2xl font-semibold">🔔 BiBong BiBong</p>,
@@ -101,7 +104,14 @@ const Code = () => {
   return (
     <Layout>
       <Seo templateTitle="AWA - CREATOR" />
-      <CodeOptionModal />
+      <CodeOptionModal
+        onCurrentCodeOption={item => {
+          setHtmlCode(item.htmlCode);
+          setCssCode(item.cssCode);
+          setIsCodeOptionModalOpen(false);
+        }}
+        isOpen={isCodeOptionModalOpen}
+      />
       <div
         className={classNames(
           isLoaded && 'fade-in-start',
