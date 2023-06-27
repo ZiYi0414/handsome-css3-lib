@@ -63,6 +63,10 @@ interface DivProps {
 
 const DivStyled = styled.div<DivProps>`
   ${props => props.css}
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 interface Props {
@@ -85,14 +89,8 @@ const CodeOptionModal = (props: Props) => {
           <div onClick={() => pickerCodeOption(item, index)} key={index}>
             <DivStyled
               css={item.cssCode + item?.renderMenuStyle}
-              style={{
-                height: '50px',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
               dangerouslySetInnerHTML={{ __html: item.htmlCode }}
-            ></DivStyled>
+            />
             <div className="title">{item.title}</div>
           </div>
         ))}
