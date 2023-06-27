@@ -5,6 +5,7 @@ import styles from './Modal.module.scss';
 import classNames from 'classnames';
 
 interface AModalProps extends ReactModal.Props {
+  isOpen: boolean;
   onClose: () => void;
 }
 
@@ -32,10 +33,15 @@ export const AModal = (props: AModalProps) => {
     if (open) {
       document.documentElement.style.overflow = 'hidden';
     }
+
     return () => {
       document.documentElement.style.overflow = 'initial';
     };
   }, [open]);
+
+  useEffect(() => {
+    setOpen(props.isOpen);
+  }, [props.isOpen]);
 
   return (
     <ReactModal

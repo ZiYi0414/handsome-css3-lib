@@ -8,6 +8,7 @@ import Seo from 'Seo';
 import MonacoEditor from '../components/editor/MonacoEditor';
 import styled from 'styled-components';
 import { useNotice } from 'notice/Notice.hooks';
+import CodeOptionModal from '../components/editor/CodeOptionModal';
 
 interface DivProps {
   css: string;
@@ -22,6 +23,9 @@ const Code = () => {
   const [htmlCode, setHtmlCode] = useState<string>('');
   const [cssCode, setCssCode] = useState<string>('');
   const [Notice] = useNotice();
+
+  const [isCodeOptionModalOpen, setIsCodeOptionModalOpen] =
+    useState<boolean>(true);
 
   useEffect(() => {
     Notice({
@@ -100,6 +104,14 @@ const Code = () => {
   return (
     <Layout>
       <Seo templateTitle="AWA - CREATOR" />
+      <CodeOptionModal
+        onCurrentCodeOption={item => {
+          setHtmlCode(item.htmlCode);
+          setCssCode(item.cssCode);
+          setIsCodeOptionModalOpen(false);
+        }}
+        isOpen={isCodeOptionModalOpen}
+      />
       <div
         className={classNames(
           isLoaded && 'fade-in-start',
