@@ -1,5 +1,6 @@
 import { LS_ACCESS_TOKEN_KEY, LS_USER_KEY } from './constants';
 import { Query, http } from './uitls';
+import axiosRequest from './axios';
 
 const oauthUri = 'https://github.com/login/oauth/authorize';
 const redirect_uri =
@@ -30,7 +31,7 @@ const logout = () => {
 const getTokenFormGithub = (code: string) => {
   http
     .post(
-      'https://github.com/login/oauth/access_token',
+      '/service/login/oauth/access_token',
       {
         code,
         client_id,
@@ -47,23 +48,28 @@ const getTokenFormGithub = (code: string) => {
 };
 
 const getTokenFormGithubInServer = async (code: string) => {
-  return await http
-    .post(
-      'https://github.com/login/oauth/access_token',
-      {
-        code,
-        client_id,
-        client_secret
-      },
-      ''
-    )
-    .then((data: any) => {
-      console.log(data);
-      return data;
-    })
-    .catch(e => {
-      console.log(e);
-    });
+  // return await http
+  //   .post(
+  //     '/service/login/oauth/access_token',
+  //     {
+  //       code,
+  //       client_id,
+  //       client_secret
+  //     },
+  //     ''
+  //   )
+  //   .then((data: any) => {
+  //     console.log(data);
+  //     return data;
+  //   })
+  //   .catch(e => {
+  //     console.error(e);
+  //   });
+  return axiosRequest.post('/service/login/oauth/access_token', {
+    code,
+    client_id,
+    client_secret
+  });
 };
 
 const loadUserInfo = () => {

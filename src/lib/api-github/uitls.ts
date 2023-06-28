@@ -66,13 +66,14 @@ function fetchFactory(method: string) {
     headers.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     // 添加其他头部信息
     headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
     if (token) {
       headers.append('Authorization', `Bearer ${token}`);
     }
 
     const requestOptions: RequestInit = {
       method,
-      headers,
+      headers
     };
 
     if (method !== 'GET' && method !== 'DELETE') {
