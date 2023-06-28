@@ -34,11 +34,11 @@ const baseCodeOption: ICodeOption[] = [
     htmlCode:
       '<div class="switch">\r\n  <input type="checkbox" id="toggle">\r\n  <label for="toggle"></label>\r\n</div>',
     cssCode:
-      '.switch {\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 40px;\r\n  height: 20px;\r\n}\r\n\r\n.switch input[type="checkbox"] {\r\n  opacity: 0;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\n.switch label {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: #ccc;\r\n  border-radius: 20px;\r\n  transition: background-color 0.2s ease-in-out;\r\n}\r\n\r\n.switch label:after {\r\n  content: "";\r\n  position: absolute;\r\n  top: 2px;\r\n  left: 2px;\r\n  width: 16px;\r\n  height: 16px;\r\n  background-color: #fff;\r\n  border-radius: 50%;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n  transition: transform 0.2s ease-in-out;\r\n}\r\n\r\n.switch input[type="checkbox"]:checked + label {\r\n  background-color: #4caf50;\r\n}\r\n\r\n.switch input[type="checkbox"]:checked + label:after {\r\n  transform: translateX(20px);\r\n}'
+      '.switch {\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 50px;\r\n  height: 30px;\r\n}\r\n\r\n.switch input[type="checkbox"] {\r\n  opacity: 0;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\n.switch label {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  background-color: #ccc;\r\n  border-radius: 20px;\r\n  transition: background-color 0.2s ease-in-out;\r\n}\r\n\r\n.switch label:after {\r\n  content: "";\r\n  position: absolute;\r\n  top: 2px;\r\n  left: 2px;\r\n  width: 26px;\r\n  height: 26px;\r\n  background-color: #fff;\r\n  border-radius: 50%;\r\n  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);\r\n  transition: transform 0.2s ease-in-out;\r\n}\r\n\r\n.switch input[type="checkbox"]:checked + label {\r\n  background-color: #4caf50;\r\n}\r\n\r\n.switch input[type="checkbox"]:checked + label:after {\r\n  transform: translateX(20px);\r\n}'
   },
   {
     title: '输入框 Inputs',
-    htmlCode: '<input type="text" placeholder="请输入 Please enter">',
+    htmlCode: '<input type="text" placeholder="Input">',
     cssCode:
       'input[type="text"],\r\ninput[type="email"],\r\ninput[type="password"] {\r\n  display: block;\r\n  width: 100%;\r\n  padding: 8px 12px;\r\n  font-size: 16px;\r\n  line-height: 1.5;\r\n  color: #333;\r\n  background-color: #fff;\r\n  border: 1px solid #ccc;\r\n  border-radius: 4px;\r\n  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r\n  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;\r\n}\r\n\r\ninput[type="text"]:focus,\r\ninput[type="email"]:focus,\r\ninput[type="password"]:focus {\r\n  outline: none;\r\n  border-color: #4caf50;\r\n  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(76, 175, 80, 0.2);\r\n}',
     renderMenuStyle:
@@ -67,6 +67,7 @@ const DivStyled = styled.div<DivProps>`
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 `;
 
 interface Props {
@@ -82,7 +83,7 @@ const CodeOptionModal = (props: Props) => {
   return (
     <AModal isOpen={props.isOpen} onClose={() => {}} shouldCloseOnEsc>
       <p className="mb-8 text-4xl font-semibold text-center">
-        😢 今天想来点什么！
+        🤩 Basic Components
       </p>
       <CodeOptionWrapper>
         {baseCodeOption.map((item, index) => (
@@ -91,10 +92,14 @@ const CodeOptionModal = (props: Props) => {
               css={item.cssCode + item?.renderMenuStyle}
               dangerouslySetInnerHTML={{ __html: item.htmlCode }}
             />
-            <div className="title">{item.title}</div>
+            <div className="title text-gray-500">{item.title}</div>
           </div>
         ))}
       </CodeOptionWrapper>
+      <p className="my-4 font-semibold text-center">
+        Your code will be open source and follow the
+        <span className="iconfont icon-balance mx-2"></span>MIT license
+      </p>
     </AModal>
   );
 };
@@ -106,8 +111,8 @@ const CodeOptionWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   & > div {
-    width: calc((100% - 20px) / 3);
-    margin-bottom: 10px;
+    width: calc((100% - 40px) / 3);
+    margin-bottom: 20px;
     padding: 30px 0 20px;
     border-radius: 8px;
     border: 2px solid #dcdcdc;
