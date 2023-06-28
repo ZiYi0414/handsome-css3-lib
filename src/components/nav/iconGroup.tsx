@@ -33,13 +33,6 @@ export default function IconGroup() {
           )}
         />
       </button>
-
-      <button className="ml-4 px-4">
-        <small>Sign in</small>
-        <span
-          className={classNames('iconfont ml-2 !text-[22px] icon-github')}
-        />
-      </button>
     </div>
   );
 }
