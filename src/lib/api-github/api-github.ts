@@ -67,7 +67,6 @@ const getTokenFormGithubInServer = async (
       ''
     )
     .then((data: any) => {
-      console.log(data);
       return data;
     })
     .catch(e => {
@@ -86,10 +85,13 @@ const loadUserInfo = () => {
     return Promise.resolve({});
   }
 
-  return http.get('/apiservice/user').then(user => {
-    localStorage.setItem(LS_USER_KEY, JSON.stringify(user));
-    return user;
-  });
+  return http
+    .get('/apiservice/user')
+    .then(user => {
+      localStorage.setItem(LS_USER_KEY, JSON.stringify(user));
+      return user;
+    })
+    .catch(err => err);
 };
 
 export {

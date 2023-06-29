@@ -6,8 +6,7 @@ import {
 } from 'lib/api-github/api-github';
 import { useRouter } from 'next/router';
 import { GetServerSideProps } from 'next/types';
-import React, { useEffect, useState } from 'react';
-import { LS_ACCESS_TOKEN_KEY } from 'lib/api-github/constants';
+import React, { useEffect } from 'react';
 
 export default function github_login(props) {
   const { query } = useRouter();
@@ -25,6 +24,7 @@ export default function github_login(props) {
       if (!access_token) return;
       setAccessToken(access_token);
       const res = await loadUserInfo();
+      console.log(res, 'res');
     } catch (err) {
       console.error(err);
     }
