@@ -28,6 +28,12 @@ const logout = () => {
   localStorage.removeItem(LS_USER_KEY);
 };
 
+interface GitHubTokenResponse {
+  access_token: string;
+  token_type: string;
+  scope: string;
+}
+
 const getTokenFormGithub = (code: string) => {
   http
     .post(
@@ -39,7 +45,7 @@ const getTokenFormGithub = (code: string) => {
       },
       ''
     )
-    .then((data: any) => {
+    .then((data: GitHubTokenResponse) => {
       setAccessToken(data.access_token);
     })
     .catch(e => {
@@ -47,29 +53,31 @@ const getTokenFormGithub = (code: string) => {
     });
 };
 
-const getTokenFormGithubInServer = async (code: string) => {
-  // return await http
-  //   .post(
-  //     '/service/login/oauth/access_token',
-  //     {
-  //       code,
-  //       client_id,
-  //       client_secret
-  //     },
-  //     ''
-  //   )
-  //   .then((data: any) => {
-  //     console.log(data);
-  //     return data;
-  //   })
-  //   .catch(e => {
-  //     console.error(e);
-  //   });
-  return axiosRequest.post('/service/login/oauth/access_token', {
-    code,
-    client_id,
-    client_secret
-  });
+const getTokenFormGithubInServer = async (
+  code: string
+): Promise<GitHubTokenResponse> => {
+  return await http
+    .post(
+      '/service/login/oauth/access_token',
+      {
+        code,
+        client_id,
+        client_secret
+      },
+      ''
+    )
+    .then((data: any) => {
+      console.log(data);
+      return data;
+    })
+    .catch(e => {
+      console.error(e);
+    });
+  // return axiosRequest.post('/service/login/oauth/access_token', {
+  //   code,
+  //   client_id,
+  //   client_secret
+  // });
 };
 
 const loadUserInfo = () => {
@@ -78,7 +86,7 @@ const loadUserInfo = () => {
     return Promise.resolve({});
   }
 
-  return http.get('/user').then(user => {
+  return http.get('/apiservice/user').then(user => {
     localStorage.setItem(LS_USER_KEY, JSON.stringify(user));
     return user;
   });

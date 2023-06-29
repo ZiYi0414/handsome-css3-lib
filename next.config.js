@@ -9,8 +9,12 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/service/:path*', // 匹配你的 API 路径，例如 "/api/users"
-        destination: 'https://github.com/:path*' // 实际的 API 地址
+        source: '/service/:path*',
+        destination: 'https://github.com/:path*'
+      },
+      {
+        source: '/apiservice/:path',
+        destination: 'https://api.github.com/:path*'
       }
     ];
   }

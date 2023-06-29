@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { LS_ACCESS_TOKEN_KEY } from './constants';
 
 const pendingRequest: Map<string, any> = new Map();
 
@@ -17,7 +18,8 @@ const instance = axios.create({
       'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json,application/json',
     // 添加跨域的头部信息
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+    'X-GitHub-Api-Version': '2022-11-28'
   }
 });
 
@@ -69,7 +71,10 @@ instance.interceptors.request.use(
         typeof config.headers?.set === 'function'
       ) {
         // append token
-        const token = JSON.parse(localStorage.getItem('token')!)?.token;
+        const token = JSON.parse(
+          localStorage.getItem(LS_ACCESS_TOKEN_KEY)!
+        )?.token;
+
         const Authorization: string = 'Bearer ' + token;
         token && config.headers.set('Authorization', Authorization);
       }

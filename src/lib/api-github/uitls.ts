@@ -40,12 +40,23 @@ export const Query = {
   }
 };
 
+// 创建缓存池
+const genRequestKey = (url: string, param = {}) => {
+  return url + Object.entries(param).map(([k, v]) => `${k}=${v}`);
+};
+const sleep = (t: number) => new Promise(resolve => setTimeout(resolve, t));
+
+const requestMap = new Map();
+const resultMap = new Map();
+const expire = 300;
+
 function fetchFactory(method: string) {
   const isBrowser = typeof window !== 'undefined';
-  return function (
+  return async function (
     apiPath: string,
     data: any = {},
-    base = 'https://api.github.com'
+    // base = 'https://api.github.com'
+    base = ''
   ) {
     const token = isBrowser
       ? localStorage.getItem(LS_ACCESS_TOKEN_KEY)
@@ -61,6 +72,7 @@ function fetchFactory(method: string) {
       'Accept',
       'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json'
     );
+    headers.append('X-GitHub-Api-Version', '2022-11-28');
     // 添加跨域的头部信息
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -81,23 +93,58 @@ function fetchFactory(method: string) {
       requestOptions.body = JSON.stringify(data);
     }
 
-    return fetch(url, requestOptions)
-      .then(response => {
-        const contentType = response.headers.get('content-type') || '';
-        if (!contentType.includes('application/json')) {
-          return response.text();
-        }
-        return response.json().then(json => {
-          if (response.ok) {
-            return json;
-          } else {
-            throw new Error(json.message);
-          }
-        });
-      })
-      .catch(error => {
-        throw error;
+    const key = genRequestKey(url, requestOptions);
+    const result = resultMap.get(key);
+    if (result) {
+      const { t, data } = result;
+      if (Date.now() < t + expire) {
+        return data;
+      }
+    }
+
+    const request = requestMap.get(key);
+    if (request) return await request;
+
+    const createFetch = (
+      url: string,
+      requestOptions: {},
+      onResponse: (res: any) => void
+    ) => {
+      try {
+        return fetch(url, requestOptions)
+          .then(response => {
+            const contentType = response.headers.get('content-type') || '';
+            if (!contentType.includes('application/json')) {
+              return response.text();
+            }
+            onResponse(response);
+            return response.json().then(json => {
+              if (response.ok) {
+                return json;
+              } else {
+                console.error(json.message);
+              }
+            });
+          })
+          .catch(error => {
+            throw error;
+          });
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    const promise = createFetch(url, requestOptions, result => {
+      resultMap.set(key, {
+        t: Date.now(),
+        data: result
       });
+      requestMap.delete(key);
+    });
+
+    requestMap.set(key, promise);
+
+    return await promise;
   };
 }
 
