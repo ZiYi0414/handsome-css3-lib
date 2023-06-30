@@ -1,7 +1,10 @@
 import { useState } from 'react';
 
-const useLocalStorage = (key: string, initialValue?: any) => {
-  const [state, setState] = useState(() => {
+const useLocalStorage = <T,>(
+  key: string,
+  initialValue?: T
+): [T, (newState: T | ((state: T) => T)) => void] => {
+  const [state, setState] = useState<T>(() => {
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : initialValue;
@@ -10,14 +13,15 @@ const useLocalStorage = (key: string, initialValue?: any) => {
     }
   });
 
-  const setLocalStorageState = (newState: (state: any) => void | string) => {
+  const setLocalStorageState = (newState: T | ((state: T) => T)) => {
     try {
       const newStateValue =
-        typeof newState === 'function' ? newState(state) : newState;
+        typeof newState === 'function'
+          ? (newState as (state: T) => T)(state)
+          : newState;
       setState(newStateValue);
       window.localStorage.setItem(key, JSON.stringify(newStateValue));
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(`Unable to store new value for ${key} in localStorage.`);
     }
   };
