@@ -1,6 +1,7 @@
 import { LS_ACCESS_TOKEN_KEY, LS_USER_KEY } from './constants';
 import { Query, http } from './uitls';
-import axiosRequest from './axios';
+import { GitHubTokenResponse } from 'types/github';
+import { resBody } from 'types/api';
 
 const oauthUri = 'https://github.com/login/oauth/authorize';
 const redirect_uri =
@@ -19,6 +20,13 @@ const setAccessToken = (token: string) => {
   if (window) localStorage.setItem(LS_ACCESS_TOKEN_KEY, token);
 };
 
+const getUserLocal = () => {
+  return localStorage.getItem(LS_USER_KEY);
+};
+const setUserLocal = (user: any) => {
+  if (window) localStorage.setItem(LS_USER_KEY, JSON.stringify(user));
+};
+
 const login = () => {
   window.location.href = `${oauthUri}${Query.stringify(oauthParams)}`;
 };
@@ -28,28 +36,26 @@ const logout = () => {
   localStorage.removeItem(LS_USER_KEY);
 };
 
-interface GitHubTokenResponse {
-  access_token: string;
-  token_type: string;
-  scope: string;
-}
-
-const getTokenFormGithub = (code: string) => {
+const getTokenFormGithub = (
+  code: string,
+  successCallBack?: (res?: any) => void
+) => {
   http
-    .post(
-      '/service/login/oauth/access_token',
+    .get(
+      '/api/auth/github_login',
       {
-        code,
-        client_id,
-        client_secret
+        code
       },
       ''
     )
-    .then((data: GitHubTokenResponse) => {
-      setAccessToken(data.access_token);
+    .then((data: resBody<GitHubTokenResponse>) => {
+      setAccessToken(data.data.access_token);
+      successCallBack?.(data);
+      return data;
     })
     .catch(e => {
       console.log(e);
+      return e;
     });
 };
 
@@ -58,7 +64,7 @@ const getTokenFormGithubInServer = async (
 ): Promise<GitHubTokenResponse> => {
   return await http
     .post(
-      '/service/login/oauth/access_token',
+      'https://github.com/login/oauth/access_token',
       {
         code,
         client_id,
@@ -72,11 +78,6 @@ const getTokenFormGithubInServer = async (
     .catch(e => {
       console.error(e);
     });
-  // return axiosRequest.post('/service/login/oauth/access_token', {
-  //   code,
-  //   client_id,
-  //   client_secret
-  // });
 };
 
 const loadUserInfo = () => {
@@ -88,7 +89,7 @@ const loadUserInfo = () => {
   return http
     .get('/apiservice/user')
     .then(user => {
-      localStorage.setItem(LS_USER_KEY, JSON.stringify(user));
+      setUserLocal(user);
       return user;
     })
     .catch(err => err);
@@ -101,5 +102,7 @@ export {
   login,
   logout,
   getTokenFormGithub,
-  getTokenFormGithubInServer
+  getTokenFormGithubInServer,
+  getUserLocal,
+  setUserLocal
 };
