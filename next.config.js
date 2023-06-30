@@ -6,6 +6,9 @@ const nextConfig = {
   swcMinify: true,
   // basePath: '/',
   distDir: process.env.DISTDIR || '.next',
+  images: {
+    domains: ['avatars.githubusercontent.com']
+  },
   async rewrites() {
     return [
       {

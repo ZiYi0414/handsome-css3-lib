@@ -1,0 +1,14 @@
+.profile__wrap {
+  display: flex;
+  background: var(--background);
+  .container {
+    width: 100%;
+    padding: 50px 30px;
+
+    .avator {
+      width: 230px;
+      height: 230px;
+      border-radius: 20px;
+    }
+  }
+}
