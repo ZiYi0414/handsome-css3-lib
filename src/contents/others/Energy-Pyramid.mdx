@@ -1,0 +1,256 @@
+---
+title: Energy-Pyramid
+made_by: Energy-Pyramid
+theme: dark
+---
+
+```css
+.canvas {
+  width: var(--canvas-size);
+  height: var(--canvas-size);
+  max-width: var(--canvas-max-size);
+  max-height: var(--canvas-max-size);
+  display: flex;
+  gap: 3%;
+  position: relative;
+    --background-color: #191919;
+  --main-color: #fff;
+  --main-color-semitransparent: rgba(255, 255, 255, 0.5);
+  --canvas-size: 200px;
+  --canvas-max-size: 250px;
+  --animation-duration: 1200ms;
+  --animation-delay: 120ms;
+}
+
+.energy-bar {
+  width: 2%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(var(--main-color), transparent);
+}
+
+.energy-bar::before {
+  content: "";
+  height: 5%;
+  width: 100%;
+  position: absolute;
+  background: linear-gradient(transparent, var(--main-color), transparent);
+  filter: blur(2px);
+  animation: deatail-animation var(--animation-duration) linear infinite;
+}
+
+@keyframes deatail-animation {
+  0% {
+    transform: translateY(2000%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.energy-bar:nth-child(1),
+.energy-bar:nth-child(21) {
+  height: 95%;
+  opacity: 0.05;
+}
+.energy-bar:nth-child(2),
+.energy-bar:nth-child(20) {
+  height: 95%;
+  opacity: 0.1;
+}
+.energy-bar:nth-child(3),
+.energy-bar:nth-child(19) {
+  height: 90%;
+  opacity: 0.2;
+}
+.energy-bar:nth-child(4),
+.energy-bar:nth-child(18) {
+  height: 85%;
+  opacity: 0.3;
+}
+.energy-bar:nth-child(5),
+.energy-bar:nth-child(17) {
+  height: 80%;
+  opacity: 0.4;
+}
+.energy-bar:nth-child(6),
+.energy-bar:nth-child(16) {
+  height: 75%;
+  opacity: 0.5;
+}
+.energy-bar:nth-child(7),
+.energy-bar:nth-child(15) {
+  height: 70%;
+  opacity: 0.6;
+}
+.energy-bar:nth-child(8),
+.energy-bar:nth-child(14) {
+  height: 65%;
+  opacity: 0.7;
+}
+.energy-bar:nth-child(9),
+.energy-bar:nth-child(13) {
+  height: 60%;
+  opacity: 0.8;
+}
+.energy-bar:nth-child(10),
+.energy-bar:nth-child(12) {
+  height: 55%;
+  opacity: 0.9;
+}
+.energy-bar:nth-child(11) {
+  height: 50%;
+}
+
+.energy-bar:nth-child(2)::before,
+.energy-bar:nth-child(20)::before {
+  animation-delay: var(--animation-delay);
+}
+.energy-bar:nth-child(3)::before,
+.energy-bar:nth-child(19)::before {
+  animation-delay: calc(var(--animation-delay) * 2);
+}
+.energy-bar:nth-child(4)::before,
+.energy-bar:nth-child(18)::before {
+  animation-delay: calc(var(--animation-delay) * 3);
+}
+.energy-bar:nth-child(5)::before,
+.energy-bar:nth-child(17)::before {
+  animation-delay: calc(var(--animation-delay) * 4);
+}
+.energy-bar:nth-child(6)::before,
+.energy-bar:nth-child(16)::before {
+  animation-delay: calc(var(--animation-delay) * 5);
+}
+.energy-bar:nth-child(7)::before,
+.energy-bar:nth-child(15)::before {
+  animation-delay: calc(var(--animation-delay) * 6);
+}
+.energy-bar:nth-child(8)::before,
+.energy-bar:nth-child(14)::before {
+  animation-delay: calc(var(--animation-delay) * 7);
+}
+.energy-bar:nth-child(9)::before,
+.energy-bar:nth-child(13)::before {
+  animation-delay: calc(var(--animation-delay) * 8);
+}
+.energy-bar:nth-child(10)::before,
+.energy-bar:nth-child(12)::before {
+  animation-delay: calc(var(--animation-delay) * 9);
+}
+.energy-bar:nth-child(11)::before {
+  animation-delay: calc(var(--animation-delay) * 10);
+}
+
+.pyramid {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  gap: 5%;
+}
+
+.pyramid-bar {
+  height: 5%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--main-color),
+    transparent
+  );
+  border-radius: 20px;
+  box-shadow: 0 -15vmin 40px var(--main-color-semitransparent);
+}
+
+.pyramid-bar:nth-child(1) {
+  width: 5%;
+}
+.pyramid-bar:nth-child(2) {
+  width: 10%;
+  opacity: 0.9;
+}
+.pyramid-bar:nth-child(3) {
+  width: 20%;
+  opacity: 0.8;
+}
+.pyramid-bar:nth-child(4) {
+  width: 30%;
+  opacity: 0.7;
+}
+.pyramid-bar:nth-child(5) {
+  width: 40%;
+  opacity: 0.6;
+}
+.pyramid-bar:nth-child(6) {
+  width: 50%;
+  opacity: 0.5;
+}
+.pyramid-bar:nth-child(7) {
+  width: 60%;
+  opacity: 0.4;
+}
+.pyramid-bar:nth-child(8) {
+  width: 70%;
+  opacity: 0.3;
+}
+.pyramid-bar:nth-child(9) {
+  width: 80%;
+  opacity: 0.2;
+}
+.pyramid-bar:nth-child(10) {
+  width: 90%;
+  opacity: 0.1;
+}
+.pyramid-bar:nth-child(11) {
+  width: 100%;
+  opacity: 0.05;
+}
+```
+
+```html
+<div class="canvas">
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+  <div class="energy-bar"></div>
+
+  <div class="pyramid">
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+    <div class="pyramid-bar"></div>
+  </div>
+</div>
+```
