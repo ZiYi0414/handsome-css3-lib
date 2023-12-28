@@ -4,6 +4,8 @@ import { bundleMDX } from 'mdx-bundler';
 import { join } from 'path';
 import { ContentType, PickContentProps } from 'types/component';
 import rehypePrism from 'rehype-prism-plus';
+import { getAllComponentsFormGithub } from './api-github/api-github';
+import { GitHubIssuesComponent } from 'types/github';
 
 export function getFiles(type: ContentType) {
   return readdirSync(join(process.cwd(), 'src', 'contents', type));
@@ -51,7 +53,6 @@ export async function getFileBySlug(type: ContentType, slug: string) {
 
 export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
   const files = readdirSync(join(process.cwd(), 'src', 'contents', type));
-
   return files.reduce((allPosts: Array<PickContentProps<T>>, postSlug) => {
     const source = readFileSync(
       join(process.cwd(), 'src', 'contents', type, postSlug),
@@ -70,7 +71,6 @@ export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
         result.css = e.replace('css', '');
       }
     });
-
     const res = [
       {
         ...(data as any),
@@ -83,3 +83,31 @@ export async function getAllFilesFrontmatter<T extends ContentType>(type: T) {
     return res;
   }, []);
 }
+
+// export async function getAllComponents() {
+//   const results = [];
+//   getAllComponentsFormGithub(data => {
+//     const list = data.data;
+//     list.map((e: GitHubIssuesComponent) => {
+//       const { data, content } = matter(e.body_text);
+//       const result = {
+//         html: '',
+//         css: '',
+//         title: e.title,
+//         slug: e.number.toString(),
+//         made_by: e.user.login,
+//         url: e.user.url
+//       };
+//       const format = content.split('```');
+//       format.forEach(e => {
+//         if (e.indexOf('html') != -1) {
+//           result.html = e.replace('html', '');
+//         } else if (e.indexOf('css') != -1) {
+//           result.css = e.replace('css', '');
+//         }
+//       });
+//       results.push(result);
+//     });
+//   });
+//   return results;
+// }

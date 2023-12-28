@@ -39,7 +39,7 @@ export default function Card(props: ICardProps) {
           post?.theme === 'dark' && styles.card__dark
         )}
         style={{ ...style }}
-        onClick={() => routerGo(`/${post.type}/${post.title}`)}
+        onClick={() => routerGo(`/detail/${post.slug}`)}
       >
         <DivStyled
           css={post.css}

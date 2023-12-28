@@ -1,7 +1,8 @@
 import { LS_ACCESS_TOKEN_KEY, LS_USER_KEY } from './constants';
 import { Query, http } from './uitls';
-import { GitHubTokenResponse } from 'types/github';
+import { GitHubIssuesComponent, GitHubTokenResponse } from 'types/github';
 import { resBody } from 'types/api';
+import { ContentType, HSComponentProps } from 'types/component';
 
 const oauthUri = 'https://github.com/login/oauth/authorize';
 const redirect_uri =
@@ -80,6 +81,63 @@ const getTokenFormGithubInServer = async (
     });
 };
 
+const getComponentsFormGithubByType = async (
+  type: ContentType,
+  successCallBack?: (res?: any) => void
+): Promise<resBody<HSComponentProps[]>> => {
+  return http
+    .get(
+      '/api/components/type',
+      {
+        type
+      },
+      ''
+    )
+    .then((data: resBody<HSComponentProps[]>) => {
+      successCallBack?.(data);
+      return data;
+    })
+    .catch(e => {
+      console.log(e);
+      return e;
+    });
+};
+
+const getAllComponentsFormGithub = async (
+  successCallBack?: (res?: any) => void
+): Promise<resBody<HSComponentProps[]>> => {
+  return http
+    .get('/api/components/all')
+    .then((data: resBody<HSComponentProps[]>) => {
+      successCallBack?.(data);
+      return data;
+    })
+    .catch(e => {
+      console.log(e);
+      return e;
+    });
+};
+
+const getAllComponetsFormGithubInServer = async (
+  type?: ContentType[]
+): Promise<GitHubIssuesComponent[]> => {
+  return await http
+    .get(
+      'https://api.github.com/repos/ZiYi0414/handsome-css3-lib/issues',
+      {
+        labels: 'component,' + (type?.join(',') || '')
+      },
+      ''
+    )
+    .then((data: GitHubIssuesComponent[]) => {
+      return data;
+    })
+    .catch(e => {
+      console.error(e);
+      return [];
+    });
+};
+
 const loadUserInfo = () => {
   if (!getAccessToken()) {
     logout();
@@ -104,5 +162,8 @@ export {
   getTokenFormGithub,
   getTokenFormGithubInServer,
   getUserLocal,
-  setUserLocal
+  setUserLocal,
+  getAllComponetsFormGithubInServer,
+  getAllComponentsFormGithub,
+  getComponentsFormGithubByType
 };

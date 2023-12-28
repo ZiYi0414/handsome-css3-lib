@@ -3,26 +3,22 @@ import Seo from 'Seo';
 import styles from '../styles/Type.module.scss';
 import useLoaded from 'hooks/useLoaded';
 import { Card } from 'content/index';
-import Link from 'next/link';
-import { components_data } from '../common/exports_data';
-import { GetStaticPaths, GetStaticProps } from 'next/types';
-import { getAllFilesFrontmatter } from 'lib/mdx';
 import { ContentType, HSComponentProps } from 'types/component';
 import SideMenu from 'layout/SideMenu';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import { getComponentsFormGithubByType } from 'lib/api-github/api-github';
+import { useRouter } from 'next/router';
 
 interface IProps {
   posts: HSComponentProps[];
-  type: ContentType;
 }
-export default function Type({ posts, type }: IProps) {
+export default function Type({ posts }: IProps) {
+  const router = useRouter();
+  const type = (router?.query?.type as ContentType) || '';
   const isLoaded = useLoaded();
   const [components, setComponents] = useState<HSComponentProps[]>([]);
   const [loadMore, setLoadMore] = useState(15);
-  const randomsort = () => {
-    return Math.random() > 0.5 ? 1 : -1;
-  };
 
   const renderList = () => {
     const data = components.filter((e, idx) => {
@@ -33,9 +29,14 @@ export default function Type({ posts, type }: IProps) {
     return data.map((e, index) => <Card post={e} key={index} />);
   };
 
+  const getData = async () => {
+    const data = await getComponentsFormGithubByType(type);
+    setComponents(data.data ?? []);
+  };
+
   useEffect(() => {
-    setComponents(posts.sort(randomsort));
-  }, [posts]);
+    if (type) getData();
+  }, [type]);
   return (
     <Layout>
       <Seo templateTitle="AwA" />
@@ -72,20 +73,39 @@ export default function Type({ posts, type }: IProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: components_data.map(p => ({
-      params: {
-        type: p.index
-      }
-    })),
-    fallback: false
-  };
-};
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   return {
+//     paths: components_data.map(p => ({
+//       params: {
+//         type: p.index
+//       }
+//     })),
+//     fallback: false
+//   };
+// };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const posts = await getAllFilesFrontmatter(params?.type as ContentType);
-  return {
-    props: { posts, type: params?.type }
-  };
-};
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+//   const posts = await getAllFilesFrontmatter(params?.type as ContentType);
+//   return {
+//     props: { posts, type: params?.type }
+//   };
+// };
+
+// export const getServerSideProps: GetServerSideProps = async ctx => {
+//   console.log(ctx.query);
+
+//   const data = await getComponentsFormGithubByType(
+//     ctx?.query?.type as ContentType
+//   );
+
+//   try {
+//     return {
+//       props: { posts: data, type: ctx?.query?.type }
+//     };
+//   } catch (error) {
+//     console.log('types:::' + error);
+//     return {
+//       props: { posts: data, type: ctx?.query?.type }
+//     };
+//   }
+// };

@@ -70,7 +70,7 @@ function fetchFactory(method: string) {
     const headers = new Headers();
     headers.append(
       'Accept',
-      'application/vnd.github.squirrel-girl-preview, application/vnd.github.html+json'
+      'application/vnd.github.squirrel-girl-preview, application/vnd.github.raw+json'
     );
     headers.append('X-GitHub-Api-Version', '2022-11-28');
     // 添加跨域的头部信息

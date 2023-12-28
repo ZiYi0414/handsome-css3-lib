@@ -2,15 +2,12 @@ import Layout from 'layout/Layout';
 import Seo from 'Seo';
 import styles from '../styles/Type.module.scss';
 import useLoaded from 'hooks/useLoaded';
-import { Card, Banner } from 'content/index';
-import Link from 'next/link';
-import { components_data, HandsomeComponent } from '../common/exports_data';
-import { GetStaticPaths, GetStaticProps } from 'next/types';
-import { getAllFilesFrontmatter, getFiles } from 'lib/mdx';
+import { Card } from 'content/index';
 import { ContentType, HSComponentProps } from 'types/component';
 import SideMenu from 'layout/SideMenu';
 import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import { getAllComponentsFormGithub } from 'lib/api-github/api-github';
 
 interface IProps {
   posts: HSComponentProps[];
@@ -20,9 +17,6 @@ export default function Type({ posts, type = 'ALL' }: IProps) {
   const isLoaded = useLoaded();
   const [components, setComponents] = useState<HSComponentProps[]>([]);
   const [loadMore, setLoadMore] = useState(15);
-  const randomsort = () => {
-    return Math.random() > 0.5 ? 1 : -1;
-  };
 
   const renderList = () => {
     const data = components.filter((e, idx) => {
@@ -33,9 +27,14 @@ export default function Type({ posts, type = 'ALL' }: IProps) {
     return data.map((e, index) => <Card post={e} key={index} />);
   };
 
+  const getData = async () => {
+    const data = await getAllComponentsFormGithub();
+    setComponents(data.data ?? []);
+  };
+
   useEffect(() => {
-    setComponents(posts.sort(randomsort));
-  }, [posts]);
+    getData();
+  }, []);
   return (
     <Layout>
       <Seo templateTitle="AwA" />
@@ -71,14 +70,3 @@ export default function Type({ posts, type = 'ALL' }: IProps) {
     </Layout>
   );
 }
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const posts: HSComponentProps[] = [];
-  components_data.map(async component => {
-    posts.push(...(await getAllFilesFrontmatter(component.index)));
-  });
-
-  return {
-    props: { posts }
-  };
-};

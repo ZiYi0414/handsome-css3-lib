@@ -1,10 +1,10 @@
 export type ContentType =
-  | 'buttons'
-  | 'inputs'
-  | 'switches'
-  | 'checkboxes'
-  | 'loaders'
-  | 'others';
+  | 'Button'
+  | 'Input'
+  | 'Switch'
+  | 'CheckBox'
+  | 'Loader'
+  | 'Other';
 
 export interface HSComponentProps {
   title: string;
@@ -13,6 +13,7 @@ export interface HSComponentProps {
   html: string;
   theme: 'dark' | 'light';
   type: ContentType;
+  slug: number | string;
 }
 
 export interface SlugComponentProps {

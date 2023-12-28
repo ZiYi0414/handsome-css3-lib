@@ -7,33 +7,33 @@ export interface HandsomeComponent {
 }
 export const components_data: HandsomeComponent[] = [
   {
-    index: 'buttons',
+    index: 'Button',
     type: '按钮 Buttons',
     children: []
   },
   {
-    index: 'loaders',
+    index: 'Loader',
     type: '加载 Loaders',
     children: []
   },
   {
-    index: 'switches',
+    index: 'Switch',
     type: '开关 Switches',
     children: []
   },
   {
-    index: 'inputs',
+    index: 'Input',
     type: '输入框 Inputs',
     children: []
   },
   {
-    index: 'checkboxes',
+    index: 'CheckBox',
     type: '多选框 Checkboxes',
     children: []
   },
 
   {
-    index: 'others',
+    index: 'Other',
     type: '创想 others',
     children: []
   }

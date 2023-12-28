@@ -35,7 +35,7 @@ export default function Profile() {
             <div className="ml-4">
               <div className="font-semibold text-3xl">{user.name}</div>
               <div className="text-gray-300 my-1">{user.login}</div>
-              <div className='mt-10 mb-4'>{user.bio}</div>
+              <div className="mt-10 mb-4">{user.bio}</div>
               <div>
                 <span>{user.company} </span>
                 <span>{user.location} </span>
