@@ -1,6 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { getAllComponetsFormGithubInServer } from 'lib/api-github/api-github';
-import { getCache, hasCache, setCache } from 'lib/node-cache';
+import {
+  getCache,
+  getKeys,
+  getStats,
+  hasCache,
+  setCache
+} from 'lib/node-cache';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { resBody } from 'types/api';
 import { ContentType } from 'types/component';
@@ -11,16 +17,20 @@ export default async function handler(
   res: NextApiResponse<resBody<GitHubIssuesComponent[] | any>>
 ) {
   const { query } = req;
-  if (typeof query?.type === 'string' && !!query?.type?.length) {
-    const components = hasCache(query?.type);
+  const { page = 1, per_page = 20, type } = query;
+
+  if (typeof type === 'string' && !!type?.length) {
+    const components = hasCache(`${type}:${page}`);
     if (!components) {
       console.log(
-        `%c [${query?.type}_components] 缓存中没有数据，正在请求数据`
+        `%c [${type}_components:${page}] 缓存中没有数据，正在请求数据`
       );
 
-      const componets_res = await getAllComponetsFormGithubInServer([
-        query?.type as ContentType
-      ]);
+      const componets_res = await getAllComponetsFormGithubInServer({
+        page: Number(page),
+        per_page: Number(per_page),
+        type: [type as ContentType]
+      });
       if (componets_res) {
         const list = componets_res;
         const data = list.map((e: GitHubIssuesComponent) => {
@@ -43,6 +53,7 @@ export default async function handler(
             slug: e.number.toString(),
             made_by: dataObj?.made_by || e.user.login,
             theme: dataObj?.theme || 'default',
+            label: e.labels,
             user: e.user,
             url: e.user.url
           };
@@ -56,17 +67,16 @@ export default async function handler(
           });
           return result;
         });
-        if (data.length > 0) {
-          setCache(query?.type, data);
-        }
+        setCache(`${type}:${page}`, data);
         res.status(200).json({ code: 200, msg: 'success', data: data });
       } else {
         res.status(500).json({ code: 500, msg: 'error', data: [] });
       }
     } else {
-      const data = getCache(query?.type);
-      console.log(`%c [${query?.type}_components] 缓存中有数据，缓存命中`);
-      res.status(200).json({ code: 200, msg: 'success', data: data });
+      const data = getCache(`${type}:${page}`);
+      console.log(`%c [${type}_components:${page}] 缓存中有数据，缓存命中`);
+      console.log(getStats());
+      res.status(200).json({ code: 200, msg: 'cache hit success', data: data });
     }
   } else {
     res.status(500).json({ code: 500, msg: 'error', data: [] });

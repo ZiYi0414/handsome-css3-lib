@@ -62,6 +62,7 @@ body {
   --white: #fff;
   --bgV2: #1b294740;
 
+  --loadingbackground: #00000050;
   --animate-duration: 800ms;
 }
 [data-theme='dark'] {
@@ -265,4 +266,13 @@ a {
   animation-fill-mode: both;
   animation-name: flipOutX;
   backface-visibility: visible !important;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.fade-in.show {
+  opacity: 1;
 }

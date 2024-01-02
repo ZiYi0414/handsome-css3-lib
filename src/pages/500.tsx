@@ -10,7 +10,9 @@ export default function NotFoundPage() {
         <section className="flex justify-center items-center flex-col h-[70vh]">
           {/* eslint-disable-next-line react/no-unescaped-entities */}
           <div className="typing-demo">The server is tired....</div>
-          <div className="title-404">服务器好像寄了...</div>
+          <div className="title-404">
+            服务器好像寄了...或请求次数达到GitHub上限
+          </div>
           <Link href={'/'} className="text-[#d23669]">
             Lets Go ( )
           </Link>

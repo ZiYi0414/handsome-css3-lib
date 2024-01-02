@@ -2,7 +2,8 @@ const nextConfig = {
   eslint: {
     dirs: ['src']
   },
-  reactStrictMode: true,
+  // reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   // basePath: '/',
   distDir: process.env.DISTDIR || '.next',

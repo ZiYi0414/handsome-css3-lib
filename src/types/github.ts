@@ -1,3 +1,5 @@
+import { ContentType } from './component';
+
 interface GitHubTokenResponse {
   access_token: string;
   token_type: string;
@@ -127,7 +129,27 @@ interface User {
   site_admin: boolean;
 }
 
-export type { GitHubTokenResponse, GitHubUserInfo, GitHubIssuesComponent };
+interface getComponentsBodyFormGithub {
+  type?: ContentType[];
+  creator?: string;
+  page?: number;
+  per_page?: number;
+}
+
+interface getComponentsBodyInServer {
+  type?: ContentType;
+  creator?: string;
+  page?: number;
+  per_page?: number;
+}
+
+export type {
+  GitHubTokenResponse,
+  GitHubUserInfo,
+  GitHubIssuesComponent,
+  getComponentsBodyInServer,
+  getComponentsBodyFormGithub
+};
 
 // Rest of your code here
 // ...

@@ -1,8 +1,13 @@
 import { LS_ACCESS_TOKEN_KEY, LS_USER_KEY } from './constants';
 import { Query, http } from './uitls';
-import { GitHubIssuesComponent, GitHubTokenResponse } from 'types/github';
+import {
+  GitHubIssuesComponent,
+  GitHubTokenResponse,
+  getComponentsBodyFormGithub,
+  getComponentsBodyInServer
+} from 'types/github';
 import { resBody } from 'types/api';
-import { ContentType, HSComponentProps } from 'types/component';
+import { ContentType, HSComponentProps, SlugComponentProps } from 'types/component';
 
 const oauthUri = 'https://github.com/login/oauth/authorize';
 const redirect_uri =
@@ -82,14 +87,14 @@ const getTokenFormGithubInServer = async (
 };
 
 const getComponentsFormGithubByType = async (
-  type: ContentType,
+  body: getComponentsBodyInServer,
   successCallBack?: (res?: any) => void
 ): Promise<resBody<HSComponentProps[]>> => {
   return http
     .get(
       '/api/components/type',
       {
-        type
+        ...body
       },
       ''
     )
@@ -104,10 +109,13 @@ const getComponentsFormGithubByType = async (
 };
 
 const getAllComponentsFormGithub = async (
+  body: getComponentsBodyFormGithub,
   successCallBack?: (res?: any) => void
 ): Promise<resBody<HSComponentProps[]>> => {
   return http
-    .get('/api/components/all')
+    .get('/api/components/all', {
+      ...body
+    })
     .then((data: resBody<HSComponentProps[]>) => {
       successCallBack?.(data);
       return data;
@@ -119,22 +127,59 @@ const getAllComponentsFormGithub = async (
 };
 
 const getAllComponetsFormGithubInServer = async (
-  type?: ContentType[]
+  body: getComponentsBodyFormGithub
 ): Promise<GitHubIssuesComponent[]> => {
+  const { type, page = 1, per_page = 20 } = body;
   return await http
     .get(
       'https://api.github.com/repos/ZiYi0414/handsome-css3-lib/issues',
       {
-        labels: 'component,' + (type?.join(',') || '')
+        labels: 'component,' + (type?.join(',') || ''),
+        page,
+        per_page
       },
       ''
     )
-    .then((data: GitHubIssuesComponent[]) => {
-      return data;
+    .then((res: GitHubIssuesComponent[]) => {
+      return res;
     })
     .catch(e => {
       console.error(e);
       return [];
+    });
+};
+
+const getComponentDetailFormGithub = async (
+  slug: number,
+  successCallBack?: (res?: any) => void
+): Promise<resBody<SlugComponentProps>> => {
+  return http
+    .get('/api/components/detail', {
+      slug
+    })
+    .then((data: resBody<SlugComponentProps>) => {
+      successCallBack?.(data);
+      return data;
+    })
+    .catch(e => {
+      console.log(e);
+      return e;
+    });
+};
+
+const getComponentDetailFormGithubInServer = async (
+  slug: number
+): Promise<GitHubIssuesComponent> => {
+  return await http
+    .get(
+      'https://api.github.com/repos/ZiYi0414/handsome-css3-lib/issues/' + slug
+    )
+    .then((data: GitHubIssuesComponent) => {
+      return data;
+    })
+    .catch(e => {
+      console.error(e);
+      return {} as GitHubIssuesComponent;
     });
 };
 
@@ -165,5 +210,7 @@ export {
   setUserLocal,
   getAllComponetsFormGithubInServer,
   getAllComponentsFormGithub,
-  getComponentsFormGithubByType
+  getComponentsFormGithubByType,
+  getComponentDetailFormGithubInServer,
+  getComponentDetailFormGithub
 };

@@ -1,6 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { getAllComponetsFormGithubInServer } from 'lib/api-github/api-github';
-import { getCache, getKeys, hasCache, setCache } from 'lib/node-cache';
+import {
+  getCache,
+  getKeys,
+  getStats,
+  hasCache,
+  setCache
+} from 'lib/node-cache';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { resBody } from 'types/api';
 import { GitHubIssuesComponent } from 'types/github';
@@ -9,12 +15,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<resBody<GitHubIssuesComponent[] | any>>
 ) {
-  // const { query } = req;
-  const all_components = hasCache('all-components');
+  const { query } = req;
+  const { page = 1, per_page = 20 } = query;
+  const all_components = hasCache(`all-components:${page}`);
   if (!all_components) {
-    console.log('%c [all_components] 缓存中没有数据，正在请求数据');
+    console.log(`%c [all_components:${page}] 缓存中没有数据，正在请求数据`);
 
-    const componets_res = await getAllComponetsFormGithubInServer();
+    const componets_res = await getAllComponetsFormGithubInServer({
+      page: Number(page),
+      per_page: Number(per_page)
+    });
     if (componets_res) {
       const list = componets_res;
       const data = list.map((e: GitHubIssuesComponent) => {
@@ -38,6 +48,7 @@ export default async function handler(
           made_by: dataObj?.made_by || e.user.login,
           theme: dataObj?.theme || 'default',
           user: e.user,
+          label: e.labels,
           url: e.user.url
         };
         const format = e.body.split('```');
@@ -50,17 +61,15 @@ export default async function handler(
         });
         return result;
       });
-      if (data.length > 0) {
-        setCache('all-components', data);
-      }
+      setCache(`all-components:${page}`, data);
       res.status(200).json({ code: 200, msg: 'success', data: data });
     } else {
       res.status(500).json({ code: 500, msg: 'error', data: [] });
     }
   } else {
-    const data = getCache('all-components');
-    console.log('%c [all_components] 缓存中有数据，缓存命中！');
-
-    res.status(200).json({ code: 200, msg: 'success', data: data });
+    const data = getCache(`all-components:${page}`);
+    console.log(`%c [all_components:${page}] 缓存中有数据，缓存命中！`);
+    console.log(getStats());
+    res.status(200).json({ code: 200, msg: 'cache hit success', data: data });
   }
 }

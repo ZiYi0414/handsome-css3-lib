@@ -108,7 +108,7 @@ function fetchFactory(method: string) {
     const createFetch = (
       url: string,
       requestOptions: {},
-      onResponse: (res: any) => void
+      onResponse: (res: any, headers: any) => void
     ) => {
       try {
         return fetch(url, requestOptions)
@@ -117,7 +117,7 @@ function fetchFactory(method: string) {
             if (!contentType.includes('application/json')) {
               return response.text();
             }
-            onResponse(response);
+            onResponse(response, response.headers);
             return response.json().then(json => {
               if (response.ok) {
                 return json;
@@ -134,10 +134,11 @@ function fetchFactory(method: string) {
       }
     };
 
-    const promise = createFetch(url, requestOptions, result => {
+    const promise = createFetch(url, requestOptions, (result, headers) => {
       resultMap.set(key, {
         t: Date.now(),
-        data: result
+        data: result,
+        headers: headers
       });
       requestMap.delete(key);
     });

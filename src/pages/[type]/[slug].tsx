@@ -4,20 +4,24 @@ import MDXComponents from '@/components/content/mdx/MDXComponents';
 import styles from '@/styles/Slug.module.scss';
 import useLoaded from 'hooks/useLoaded';
 import { getMDXComponent } from 'mdx-bundler/client';
-import { GetStaticPaths, GetStaticProps } from 'next/types';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next/types';
 import { getFileBySlug, getFiles } from 'lib/mdx';
-import { ContentType, SlugComponentProps } from 'types/component';
+import {
+  ContentType,
+  HSComponentProps,
+  SlugComponentProps
+} from 'types/component';
 import SideMenu from 'layout/SideMenu';
 import { components_data } from 'common/exports_data';
 import { ParsedUrlQuery } from 'querystring';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
+import { getComponentDetailFormGithub } from 'lib/api-github/api-github';
 
 interface IProps {
-  post: SlugComponentProps;
-  type: ContentType;
+  info: SlugComponentProps;
 }
 interface DivProps {
   css: string;
@@ -25,20 +29,31 @@ interface DivProps {
 const DivStyled = styled.div<DivProps>`
   ${props => props.css}
 `;
-export default function Slug({ post, type }: IProps) {
+export default function Slug({}: IProps) {
   const isLoaded = useLoaded();
   const router = useRouter();
-  const Component = React.useMemo(
-    () => getMDXComponent(post.code),
-    [post.code]
-  );
+  const { type, slug } = router?.query || '';
+  const [info, setInfo] = useState<SlugComponentProps>({});
+  const Component = React.useMemo(() => {
+    return info.code ? getMDXComponent(info.code) : () => <>出错了！</>;
+  }, [info.code]);
+
+  useEffect(() => {
+    // 获取github上的组件详情
+    if (slug) {
+      getComponentDetailFormGithub(Number(slug)).then(res => {
+        console.log(res);
+        setInfo(res.data);
+      });
+    }
+  }, [slug]);
   return (
     <Layout>
       <Seo templateTitle="AwA" />
       <div
         className={classNames(isLoaded && 'fade-in-start', styles.slug__wrap)}
       >
-        <SideMenu activeKey={type} data-fade="1" />
+        <SideMenu activeKey={type as ContentType} data-fade="1" />
         <div className="w-full pt-12" data-fade="1">
           <div className="pl-5">
             <button
@@ -51,32 +66,33 @@ export default function Slug({ post, type }: IProps) {
           <div className={styles.container}>
             <article
               className={classNames(
-                post?.theme === 'dark' && styles.card__dark
+                info?.theme === 'dark' && styles.card__dark
               )}
             >
               <div className={styles.content__title}>
-                {post.made_by} @ {post.title}
+                {info.made_by} @ {info.title}
               </div>
               <div className={classNames(styles.card__wrap)}>
-                <DivStyled css={post.css} style={{ zIndex: 9999 }}>
+                <DivStyled css={info.css} style={{ zIndex: 9999 }}>
                   <div
-                    id={post.title}
+                    id={info.title}
                     className={classNames(
-                      post.title,
                       'flex items-center w-full h-full justify-center'
                     )}
-                    dangerouslySetInnerHTML={{ __html: post.html }}
+                    dangerouslySetInnerHTML={{ __html: info.html }}
                   ></div>
                 </DivStyled>
               </div>
             </article>
-            <Component
-              components={
-                {
-                  ...MDXComponents
-                } as any
-              }
-            />
+            {info && (
+              <Component
+                components={
+                  {
+                    ...MDXComponents
+                  } as any
+                }
+              />
+            )}
           </div>
         </div>
       </div>
@@ -84,38 +100,9 @@ export default function Slug({ post, type }: IProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths: (
-    | string
-    | {
-        params: ParsedUrlQuery;
-        locale?: string | undefined;
-      }
-  )[] = [];
-  components_data.forEach(p => {
-    const fileNames = getFiles(p.index);
-    fileNames.forEach(e => {
-      paths.push({
-        params: {
-          type: p.index,
-          slug: e.replace('.mdx', '')
-        }
-      });
-    });
-  });
-
-  return {
-    paths: paths,
-    fallback: false
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = await getFileBySlug(
-    params?.type as ContentType,
-    params?.slug as string
-  );
-  return {
-    props: { post, type: params?.type }
-  };
-};
+// export const getServerSideProps = async ctx => {
+//   const result = await getComponentDetailFormGithub(Number(ctx.query.slug));
+//   console.log('----------' + result);
+//   if (result.code === 200) return { props: { info: result.data } };
+//   else return { notFound: true };
+// };

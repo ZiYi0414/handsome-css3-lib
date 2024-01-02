@@ -18,4 +18,8 @@ const getKeys = () => {
   return myCache.keys();
 };
 
-export { getCache, setCache, hasCache, getKeys };
+const getStats = () => {
+  return myCache.getStats();
+};
+
+export { getCache, setCache, hasCache, getKeys, getStats };
