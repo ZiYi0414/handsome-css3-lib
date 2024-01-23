@@ -33,7 +33,9 @@ export default function Slug({}: IProps) {
   const isLoaded = useLoaded();
   const router = useRouter();
   const { type, slug } = router?.query || '';
-  const [info, setInfo] = useState<SlugComponentProps>({});
+  const [info, setInfo] = useState<SlugComponentProps>(
+    {} as SlugComponentProps
+  );
   const Component = React.useMemo(() => {
     return info.code ? getMDXComponent(info.code) : () => <>出错了！</>;
   }, [info.code]);
