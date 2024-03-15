@@ -18,7 +18,7 @@ const Notification: React.FC<INoticeOptions> = props => {
     onClose
   } = props;
   return (
-    <div className="px-4 pb-4">
+    <div className="px-4 pb-4 toast">
       <div className="flex justify-between items-center pt-2">
         <div className="font-semibold">{title}</div>
         {showClose && (

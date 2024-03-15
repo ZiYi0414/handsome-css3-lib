@@ -63,6 +63,20 @@ body {
   --bgV2: #1b294740;
 
   --animate-duration: 800ms;
+
+  --tr: all 0.5s ease 0s;
+  --ch1: #05478a;
+  --ch2: #0070e0;
+  --ch3: #0070e040;
+  --cs1: #005e38;
+  --cs2: #03a65a;
+  --cs3: #03a65a40;
+  --cw1: #c24914;
+  --cw2: #fc8621;
+  --cw3: #fc862140;
+  --ce1: #851d41;
+  --ce2: #db3056;
+  --ce3: #db305640;
 }
 [data-theme='dark'] {
   --background: black;
@@ -265,4 +279,18 @@ a {
   animation-fill-mode: both;
   animation-name: flipOutX;
   backface-visibility: visible !important;
+}
+
+.toast {
+  background: linear-gradient(90deg, #1f2333, #22232b);
+  color: #f5f5f5;
+  text-align: center;
+  border-radius: 0.25rem;
+  position: relative;
+  font-weight: 300;
+  text-align: left;
+  transition: var(--tr);
+  opacity: 1;
+  border: 0.15rem solid #fff2;
+  box-shadow: inset 0 0 0.5rem 0 #1d1e26;
 }
